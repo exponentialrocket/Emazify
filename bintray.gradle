@@ -7,7 +7,7 @@ if (project.rootProject.file('local.properties').exists()) {
     // Homepage URL of the library
     def gitUrl = 'https://github.com/exponentialrocket/Emazify.git'      // Git repository URL
 
-    group = "com.kevalpatel2106"    //Group id
+    group = "com.oneway"    //Group id
 
     install {
 
@@ -30,7 +30,7 @@ if (project.rootProject.file('local.properties').exists()) {
                     }
                     developers {
                         developer {
-                            id 'exponential'     //Dev id
+                            id 'exponentialrocket'     //Dev id
                             name 'Vivek Kejriwal'      //Dev name
                             email 'vivek.kej@gmail.com'    //Dev email
                         }
