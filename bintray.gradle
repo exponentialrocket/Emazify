@@ -31,9 +31,9 @@ if (project.rootProject.file('local.properties').exists()) {
                     }
                     developers {
                         developer {
-                            id 'exponentialrocket'     //Dev id
-                            name 'Vivek Kejriwal'      //Dev name
-                            email 'vivek.kej@gmail.com'    //Dev email
+                            id 'drashtipatel'     //Dev id
+                            name 'Drashti Patel'      //Dev name
+                            email 'perfactprachi@gmail.com'    //Dev email
                         }
                     }
                     scm {
@@ -80,7 +80,7 @@ if (project.rootProject.file('local.properties').exists()) {
             repo = "maven"
 
             // it is the name that appears in bintray when logged
-            name = ""    //Name of the artifact [Group Id]:[name]:[version]
+            name = "onewayuser"    //Name of the artifact [Group Id]:[name]:[version]
             websiteUrl = siteUrl
             vcsUrl = gitUrl
             licenses = ["Apache-2.0"]
