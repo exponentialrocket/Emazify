@@ -18,7 +18,7 @@ if (project.rootProject.file('local.properties').exists()) {
 
                     // Add your description here
 
-                    name 'exponentialrocket/maven'  //Name of the repo
+                    name 'maven'  //Name of the repo
                     description = 'Emazify is an Android Library to analytics.'
                     url siteUrl
 
@@ -77,7 +77,7 @@ if (project.rootProject.file('local.properties').exists()) {
         configurations = ['archives']
 
         pkg {
-            repo = "exponentialrocket/maven"
+            repo = "maven"
 
             // it is the name that appears in bintray when logged
             name = "onewayuser"    //Name of the artifact [Group Id]:[name]:[version]
