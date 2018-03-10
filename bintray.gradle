@@ -17,6 +17,7 @@ if (project.rootProject.file('local.properties').exists()) {
                     packaging 'aar' //AAR format
 
                     // Add your description here
+
                     name 'maven'  //Name of the repo
                     description = 'Emazify is an Android Library to analytics.'
                     url siteUrl
