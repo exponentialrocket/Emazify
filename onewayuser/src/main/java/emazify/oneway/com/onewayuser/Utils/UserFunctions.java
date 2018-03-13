@@ -20,6 +20,15 @@ import java.io.UnsupportedEncodingException;
 
 public class UserFunctions {
 
+    private static UserFunctions ourInstance = new UserFunctions();
+
+    public static UserFunctions getInstance() {
+        return ourInstance;
+    }
+
+    private UserFunctions() {
+    }
+
     private static final String TAG = UserFunctions.class.getSimpleName();
     private static final String CONTENT_TYPE = "application/json";
 
@@ -27,9 +36,9 @@ public class UserFunctions {
     private static final String EMAZIFY_LOGIN_URL = EMAZIFY_URL+"User_Login_Live";
     private static final String EMAZIFY_USER_PROPERTY_URL = EMAZIFY_URL+"User_Property_Live";
 
-    private final Context mContext;
-    private final AsyncHttpClient myAsyncHttpClient;
-    private final AsyncHttpClient myServiceAsyncHttpClient;
+    private static Context mContext = null;
+    private static AsyncHttpClient myAsyncHttpClient = null;
+    private static AsyncHttpClient myServiceAsyncHttpClient = null;
 
     public UserFunctions(Context mContext) {
         this.mContext = mContext;
