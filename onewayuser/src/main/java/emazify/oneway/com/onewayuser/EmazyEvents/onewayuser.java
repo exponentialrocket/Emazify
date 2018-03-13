@@ -5,13 +5,4 @@ package emazify.oneway.com.onewayuser.EmazyEvents;
  */
 
 public class onewayuser {
-    private static onewayuser ourInstance = new onewayuser();
-
-    public static onewayuser getInstance() {
-        return ourInstance;
-    }
-
-    private onewayuser() {
-    }
-
 }
