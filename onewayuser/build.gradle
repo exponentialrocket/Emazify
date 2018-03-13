@@ -28,7 +28,7 @@ dependencies {
 }
 
 
-apply from: '../bintray.gradle'
+apply from: 'bintray.gradle'
 /*
 ext {
   bintrayRepo = 'maven'

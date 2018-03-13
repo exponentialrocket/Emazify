@@ -21,4 +21,8 @@ public class onewayuser {
     public void makeMeAwesome(Context context, String data) {
         Toast.makeText(context, "Awesome " + data, Toast.LENGTH_LONG).show();
     }
+
+    public void login(){
+
+    }
 }
