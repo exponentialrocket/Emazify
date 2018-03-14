@@ -50,7 +50,7 @@ public class UserFunctions {
     }
 
 
-    public void emazifyLogin(AsyncHttpResponseHandler responseHandler) {
+    public void emazifyLogin(String CId,AsyncHttpResponseHandler responseHandler) {
 
 
         JSONObject jsonParams;
@@ -58,7 +58,7 @@ public class UserFunctions {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
-            jsonParams.put("customerId", Pref.getValue(mContext,Const.CID,""));
+            jsonParams.put("customerId", CId);
             jsonParams.put("emailId", "");
             jsonParams.put("emazyCustomerId", "");
             jsonParams.put("mobileNumber", "9408564247");
