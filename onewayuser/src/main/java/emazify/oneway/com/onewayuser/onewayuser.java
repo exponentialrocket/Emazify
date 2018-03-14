@@ -30,14 +30,18 @@ public class onewayuser {
     }
 
     private onewayuser() {
+
+
     }
 
-    public void makeMeAwesome(Context context, String data) {
-        Toast.makeText(context, "Awesome " + data, Toast.LENGTH_LONG).show();
+    public void initialize(Context context) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
     }
 
-    private void callEmazifyLoginApi(final Context context,String CId) {
-        mUserFunctions.emazifyLogin(CId,new JsonHttpResponseHandler() {
+    public void callEmazifyLoginApi(final Context context,String CId) {
+        String CId1 = CId;
+        mUserFunctions.emazifyLogin(CId1,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
