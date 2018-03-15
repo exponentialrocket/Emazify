@@ -3,7 +3,6 @@ package com.oneway.emazify;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import emazify.oneway.com.onewayuser.onewayuser;
 
 
 public class MainActivity extends AppCompatActivity {
