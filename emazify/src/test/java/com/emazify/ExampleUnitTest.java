@@ -1,4 +1,4 @@
-package emazify.oneway.com.onewayuser;
+package com.emazify;
 
 import org.junit.Test;
 

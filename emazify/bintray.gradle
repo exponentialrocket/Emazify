@@ -1,13 +1,13 @@
 if (project.rootProject.file('local.properties').exists()) {
     apply plugin: 'com.jfrog.bintray'
 
-    version = "1.0.4"     // This is the library version used when deploying the artifact
+    version = "1.0"     // This is the library version used when deploying the artifact
 
     def siteUrl = 'https://github.com/exponentialrocket/Emazify'
     // Homepage URL of the library
     def gitUrl = 'https://github.com/exponentialrocket/Emazify.git'      // Git repository URL
 
-    group = "com.oneway"    //Group id
+    group = "com.emazify"    //Group id
 
     install {
 
@@ -31,9 +31,9 @@ if (project.rootProject.file('local.properties').exists()) {
                     }
                     developers {
                         developer {
-                            id 'drashtipatel'     //Dev id
-                            name 'Drashti Patel'      //Dev name
-                            email 'perfactprachi@gmail.com'    //Dev email
+                            id 'emazify'     //Dev id
+                            name 'emazify admin'      //Dev name
+                            email 'ecosystem@emazify.com'    //Dev email
                         }
                     }
                     scm {
@@ -80,7 +80,7 @@ if (project.rootProject.file('local.properties').exists()) {
             repo = "maven"
 
             // it is the name that appears in bintray when logged
-            name = "onewayuser"    //Name of the artifact [Group Id]:[name]:[version]
+            name = "emazify"    //Name of the artifact [Group Id]:[name]:[version]
             websiteUrl = siteUrl
             vcsUrl = gitUrl
             licenses = ["Apache-2.0"]

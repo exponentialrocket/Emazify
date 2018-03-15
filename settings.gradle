@@ -1,1 +1,1 @@
-include ':app',':onewayuser'
+include ':app',':emazify'
