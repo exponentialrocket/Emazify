@@ -1,7 +1,12 @@
+
+
 if (project.rootProject.file('local.properties').exists()) {
     apply plugin: 'com.jfrog.bintray'
 
-    version = "1.0.1"     // This is the library version used when deploying the artifact
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    version = properties.getProperty("version")
+    // This is the library version used when deploying the artifact
 
     def siteUrl = 'https://github.com/exponentialrocket/Emazify'
     // Homepage URL of the library
@@ -66,8 +71,7 @@ if (project.rootProject.file('local.properties').exists()) {
         archives sourcesJar
     }
 
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 
     // https://github.com/bintray/gradle-bintray-plugin
     bintray {
