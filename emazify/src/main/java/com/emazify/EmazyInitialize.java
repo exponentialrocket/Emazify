@@ -25,22 +25,16 @@ import Utils.utils;
  * Created by owc-android on 15/3/18.
  */
 
-public class EmazyInitialize {
+public abstract class EmazyInitialize {
 
     private ConnectionDetector mConnectionDetector;
     private UserFunctions mUserFunctions;
     private static final String TAG = EmazyInitialize.class.getSimpleName();
 
-    private static EmazyInitialize ourInstance = new EmazyInitialize();
 
-    public static EmazyInitialize getInstance() {
-        return ourInstance;
-    }
+    abstract void callEmazifyLoginApi();
 
-    private EmazyInitialize() {
-
-
-    }
+    abstract void callAutoSystemUserPropertyApi();
 
     public void callEmazifyLoginApi(final Context context, String custId) {
         mConnectionDetector = new ConnectionDetector(context);
