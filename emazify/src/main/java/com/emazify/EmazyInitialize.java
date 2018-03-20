@@ -25,16 +25,17 @@ import Utils.utils;
  * Created by owc-android on 15/3/18.
  */
 
-public abstract class EmazyInitialize {
+public class EmazyInitialize {
 
     private ConnectionDetector mConnectionDetector;
     private UserFunctions mUserFunctions;
     private static final String TAG = EmazyInitialize.class.getSimpleName();
 
+    private static EmazyInitialize ourInstance = new EmazyInitialize();
 
-    abstract void callEmazifyLoginApi();
-
-    abstract void callAutoSystemUserPropertyApi();
+    public static EmazyInitialize getInstance() {
+        return ourInstance;
+    }
 
     public void callEmazifyLoginApi(final Context context, String custId) {
         mConnectionDetector = new ConnectionDetector(context);
@@ -86,10 +87,12 @@ public abstract class EmazyInitialize {
         });
     }
 
-    public void callAutoSystemUserPropertyApi(final Context context, String custId,String mobNo,String emailId,String fcmToken,String ezPushNotiEnabled) {
+
+    public void callAutoSystemUserPropertyApi(final Context context, String custId,String mobNo,String email,
+                                              String fcmToken,String ezPushNotiEnabled) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,emailId,fcmToken,ezPushNotiEnabled,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -97,9 +100,9 @@ public abstract class EmazyInitialize {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
                     if (jsonResult != null) {
-                        showErrorLog("emazify callAutoSystemUserProperty Result==>" + jsonResult.toString());
+                        showErrorLog("emazify login Result==>" + jsonResult.toString());
 
-                        Pref.setValue(context,Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
+                        Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
 
                     }
                     else {
@@ -135,6 +138,7 @@ public abstract class EmazyInitialize {
 
         });
     }
+
 
     public void callEmazifyUserPropertyApi(final Context context, String custId) {
         mUserFunctions.emazifyUserProperty(custId,new JsonHttpResponseHandler() {

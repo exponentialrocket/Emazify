@@ -3,6 +3,7 @@ package Utils;
 import android.app.Activity;
 import android.content.Context;
 
+import com.emazify.EmazyInitialize;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -20,7 +21,7 @@ import java.util.Properties;
  * Created by owc-android on 13/3/18.
  */
 
-public class UserFunctions {
+public class UserFunctions{
 
     private static UserFunctions ourInstance = new UserFunctions();
 
@@ -192,6 +193,7 @@ public class UserFunctions {
             e.printStackTrace();
         }
     }
+
 
     private void showErrorLog(String messageString) {
         utils.showErrorLog(TAG, messageString);
