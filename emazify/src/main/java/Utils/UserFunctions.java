@@ -1,5 +1,6 @@
 package Utils;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -40,6 +41,7 @@ public class UserFunctions {
     private static String emaziCustId = "";
 
     private static Context mContext = null;
+    private Activity activity = null;
     private static AsyncHttpClient myAsyncHttpClient = null;
     private static AsyncHttpClient myServiceAsyncHttpClient = null;
 
@@ -152,7 +154,7 @@ public class UserFunctions {
 
     }
 
-    public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
+    public void emazifyAutoSystemUserProperty(Activity activity,String CustId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled,
                                               AsyncHttpResponseHandler responseHandler) {
 
@@ -167,6 +169,8 @@ public class UserFunctions {
             jsonParams.put("ezUserPlatform", "Android");
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("emailId", email);
+            jsonParams.put("imei", utils.getIMEINumber(mContext,activity));
+            jsonParams.put("osName", utils.getAndroidOsName());
             jsonParams.put("ezAndroidFcmRegToken", fcmToken);
             jsonParams.put("ezPushNotificationEnabled", ezPushNotiEnabled);
             jsonParams.put("userAppVersion", utils.getVersion(mContext));

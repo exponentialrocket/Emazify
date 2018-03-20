@@ -1,5 +1,6 @@
 package com.emazify;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -91,10 +92,10 @@ public class EmazyInitialize {
         });
     }
 
-    public void callAutoSystemUserPropertyApi(final Context context, String custId) {
+    public void callAutoSystemUserPropertyApi(final Activity activity, final Context context, String custId,String mobNo,String emailId) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAutoSystemUserProperty(custId,"9408564247","patel.drashti400@gmail.com","","",new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAutoSystemUserProperty(activity,custId,mobNo,emailId,"","",new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
