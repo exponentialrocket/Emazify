@@ -1,17 +1,12 @@
 package Utils;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.IOException;
@@ -164,7 +159,7 @@ public class utils{
                     context.getClass().getClassLoader().getResourceAsStream("fileName.properties");
             properties.load(inputStream);
             version=properties.getProperty("version");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
