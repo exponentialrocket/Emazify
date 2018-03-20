@@ -154,7 +154,7 @@ public class UserFunctions {
 
     }
 
-    public void emazifyAutoSystemUserProperty(Activity activity,String CustId,String mobNo,String email,
+    public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled,
                                               AsyncHttpResponseHandler responseHandler) {
 
@@ -169,7 +169,7 @@ public class UserFunctions {
             jsonParams.put("ezUserPlatform", "Android");
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("emailId", email);
-            jsonParams.put("imei", utils.getIMEINumber(mContext,activity));
+            jsonParams.put("imei", utils.getDeviceIMEI(mContext));
             jsonParams.put("osName", utils.getAndroidOsName());
             jsonParams.put("ezAndroidFcmRegToken", fcmToken);
             jsonParams.put("ezPushNotificationEnabled", ezPushNotiEnabled);
@@ -177,7 +177,7 @@ public class UserFunctions {
             jsonParams.put("ezUserAndroidModel", utils.getDeviceName());
             jsonParams.put("androidDeviceId", utils.getDeviceId(mContext));
             jsonParams.put("ezUserAndroidManufacturer", utils.getAndroidManufacturer());
-            jsonParams.put("androidVersion", utils.getAndroidOSVersion());
+            jsonParams.put("androidVersion", utils.getOsVersion());
             jsonParams.put("ezSdkVersion", utils.getSDKVersion(mContext));
             jsonParams.put(" ", "1");
 

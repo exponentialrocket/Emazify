@@ -23,9 +23,8 @@ import java.util.Properties;
  * Created by owc-android on 13/3/18.
  */
 
-public class utils implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class utils{
 
-    public static String Imei_id = "";
     public static TelephonyManager telephonyManager;
 
     public static void showErrorLog(String tag, String messageString) {
@@ -51,33 +50,30 @@ public class utils implements ActivityCompat.OnRequestPermissionsResultCallback 
 
     }
 
-    public static String getIMEINumber(Context context, Activity activity) {
-
-
-        telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            String[] PERMISSIONS = {Manifest.permission.READ_PHONE_STATE};
-
-            if (!hasPermissions(context, PERMISSIONS)) {
-                if (!Settings.System.canWrite(context)) {
-                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_PHONE_STATE}, Const.READ_PHONE_CODE);
-                }
-            } else {
-                // continue with your code
-                if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    Imei_id = telephonyManager.getDeviceId();
-                }
-
+    @SuppressLint("MissingPermission")
+    public static String getDeviceIMEI(Context context) {
+        String deviceInternationalMobileEquipmentIdentity = null;
+        try {
+            TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm != null) {
+                deviceInternationalMobileEquipmentIdentity = tm.getDeviceId();
             }
-        } else {
-            // continue with your code
-            Imei_id = telephonyManager.getDeviceId();
+            if (deviceInternationalMobileEquipmentIdentity == null || deviceInternationalMobileEquipmentIdentity.length() == 0) {
+                //OWC-768 #vijayrajput 23-12-2015 11-30-am
+                //read phone permission not given or device International Mobile Equipment Identity not found
+                //get android id and pass to device International Mobile Equipment Identity
+                deviceInternationalMobileEquipmentIdentity = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            }
         }
+        catch (Exception e) {
+            //OWC-768 #vijayrajput 23-12-2015 11-30-am
+            //read phone permission not given or device International Mobile Equipment Identity not found
+            //get android id and pass to device International Mobile Equipment Identity
+            deviceInternationalMobileEquipmentIdentity = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            e.printStackTrace();
 
-        showErrorLog("Imei_id ID",Imei_id);
-        return Imei_id;
+        }
+        return deviceInternationalMobileEquipmentIdentity;
     }
 
     public static String getAndroidOsName(){
@@ -109,32 +105,6 @@ public class utils implements ActivityCompat.OnRequestPermissionsResultCallback 
         return builder.toString();
     }
 
-    public static boolean hasPermissions(Context context, String... permissions) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    @SuppressLint("MissingPermission")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case Const.READ_PHONE_CODE: {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Imei_id = telephonyManager.getDeviceId();
-                } else {
-
-                }
-
-                return;
-            }
-        }
-    }
 
     public static String getDeviceId(Context context) {
 
@@ -160,54 +130,28 @@ public class utils implements ActivityCompat.OnRequestPermissionsResultCallback 
         return manufacturer;
     }
 
-    public static String getAndroidOSVersion() {
-        String version = "";
-
-        try{
-            version = String.valueOf(Build.VERSION.BASE_OS);
-
-        }catch (NullPointerException e){
-
-        }catch (Exception e){
-
+    public static String getOsVersion() {
+        String osVersion;
+        try {
+            osVersion = Build.VERSION.RELEASE;
         }
-
-        showErrorLog("OS Version",version);
-        return version;
+        catch (Exception e) {
+            osVersion = "no_os_version";
+            e.printStackTrace();
+        }
+        return osVersion;
     }
 
     public static String getDeviceName() {
-        String manufacturer = Build.MANUFACTURER;
-        String model = Build.MODEL;
-        if (model.startsWith(manufacturer)) {
-            return capitalize(model);
+        String deviceName;
+        try {
+            deviceName = Build.MANUFACTURER + " " + Build.MODEL;
         }
-        return capitalize(manufacturer) + " " + model;
-    }
-
-    private static String capitalize(String str) {
-        if (TextUtils.isEmpty(str)) {
-            return str;
+        catch (Exception e) {
+            deviceName = "no_device_name";
+            e.printStackTrace();
         }
-        char[] arr = str.toCharArray();
-        boolean capitalizeNext = true;
-
-        StringBuilder phrase = new StringBuilder();
-        for (char c : arr) {
-            if (capitalizeNext && Character.isLetter(c)) {
-                phrase.append(Character.toUpperCase(c));
-                capitalizeNext = false;
-                continue;
-            } else if (Character.isWhitespace(c)) {
-                capitalizeNext = true;
-            }
-            phrase.append(c);
-        }
-
-
-
-        showErrorLog("Device Name",phrase.toString());
-        return phrase.toString();
+        return deviceName;
     }
 
 
