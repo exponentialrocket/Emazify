@@ -41,7 +41,6 @@ public class UserFunctions {
     private static String emaziCustId = "";
 
     private static Context mContext = null;
-    private Activity activity = null;
     private static AsyncHttpClient myAsyncHttpClient = null;
     private static AsyncHttpClient myServiceAsyncHttpClient = null;
 
