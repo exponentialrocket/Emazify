@@ -92,10 +92,10 @@ public class EmazyInitialize {
         });
     }
 
-    public void callAutoSystemUserPropertyApi(final Activity activity, final Context context, String custId,String mobNo,String emailId) {
+    public void callAutoSystemUserPropertyApi(final Context context, String custId,String mobNo,String emailId,String fcmToken,String ezPushNotiEnabled) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,emailId,"","",new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,emailId,fcmToken,ezPushNotiEnabled,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
