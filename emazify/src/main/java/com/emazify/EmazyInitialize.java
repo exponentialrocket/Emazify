@@ -1,20 +1,12 @@
 package com.emazify;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.emazify.inf.EmazyInitializeInf;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 
 import Utils.ConnectionDetector;
 import Utils.Const;
