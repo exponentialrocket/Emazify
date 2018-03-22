@@ -180,7 +180,7 @@ public class UserFunctions{
             jsonParams.put("androidVersion", utils.getOsVersion());
             jsonParams.put("ezSdkVersion", Const.SDK_Version);
             jsonParams.put("ezUserAutoLocation", "1");
-            jsonParams.put("source", "Android");
+            jsonParams.put("source", "Web");
 
             showErrorLog("emazifyAutoSystemUserProperty Url " + EMAZIFY_USER_AUTO_PROPERTY_URL);
             showErrorLog("emazifyAutoSystemUserProperty Params " + jsonParams.toString());
