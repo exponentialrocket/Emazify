@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
  * Created by owc-android on 13/3/18.
  */
 
-public class UserFunctions{
+public class UserFunctions implements LocationListener {
 
     private LocationManager locationManager;
     private String provider;
@@ -177,7 +177,7 @@ public class UserFunctions{
         JSONObject jsonParams;
         try {
 
-           /* if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -193,7 +193,7 @@ public class UserFunctions{
             if (location != null) {
                 System.out.println("Provider " + provider + " has been selected.");
                 onLocationChanged(location);
-            }*/
+            }
 
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
@@ -233,7 +233,7 @@ public class UserFunctions{
         utils.showErrorLog(TAG, messageString);
     }
 
- /*   @Override
+    @Override
     public void onLocationChanged(Location location) {
         lat = (int) (location.getLatitude());
         lng = (int) (location.getLongitude());
@@ -252,7 +252,7 @@ public class UserFunctions{
     @Override
     public void onProviderDisabled(String provider) {
 
-    }*/
+    }
 
 
 }
