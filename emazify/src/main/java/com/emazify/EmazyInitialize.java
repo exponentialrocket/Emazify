@@ -2,7 +2,6 @@ package com.emazify;
 
 import android.content.Context;
 
-import com.emazify.inf.EmazyInitializeInf;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -18,7 +17,7 @@ import Utils.utils;
  * Created by owc-android on 15/3/18.
  */
 
-public class EmazyInitialize implements EmazyInitializeInf{
+public class EmazyInitialize{
 
     private ConnectionDetector mConnectionDetector;
     private UserFunctions mUserFunctions;
