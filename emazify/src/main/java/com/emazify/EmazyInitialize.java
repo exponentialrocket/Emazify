@@ -81,6 +81,7 @@ public class EmazyInitialize implements EmazyInitializeInf{
     }
 
 
+
     public void callAutoSystemUserPropertyApi(final Context context, String custId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled) {
         mConnectionDetector = new ConnectionDetector(context);
