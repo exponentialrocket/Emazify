@@ -1,7 +1,6 @@
 package Utils;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -11,7 +10,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import com.emazify.EmazyInitialize;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -23,13 +21,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Properties;
 
 /**
  * Created by owc-android on 13/3/18.
  */
 
-public class UserFunctions implements LocationListener {
+public class UserFunctions{
 
     private LocationManager locationManager;
     private String provider;
@@ -180,7 +177,7 @@ public class UserFunctions implements LocationListener {
         JSONObject jsonParams;
         try {
 
-            if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+           /* if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -196,7 +193,7 @@ public class UserFunctions implements LocationListener {
             if (location != null) {
                 System.out.println("Provider " + provider + " has been selected.");
                 onLocationChanged(location);
-            }
+            }*/
 
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
@@ -236,7 +233,7 @@ public class UserFunctions implements LocationListener {
         utils.showErrorLog(TAG, messageString);
     }
 
-    @Override
+ /*   @Override
     public void onLocationChanged(Location location) {
         lat = (int) (location.getLatitude());
         lng = (int) (location.getLongitude());
@@ -255,7 +252,7 @@ public class UserFunctions implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
-    }
+    }*/
 
 
 }
