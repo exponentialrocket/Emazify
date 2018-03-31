@@ -172,7 +172,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,float customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+   /* public void emazifyUserProperty(String CustId,float customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -272,7 +272,7 @@ public class UserFunctions{
         }
 
     }
-
+*/
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled,LatLng latlng,
                                               AsyncHttpResponseHandler responseHandler) {
