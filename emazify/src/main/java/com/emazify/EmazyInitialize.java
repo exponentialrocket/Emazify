@@ -133,8 +133,189 @@ public class EmazyInitialize{
     }
 
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId) {
-        mUserFunctions.emazifyUserProperty(custId,new JsonHttpResponseHandler() {
+    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,String customAttributeValue) {
+
+        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyUserPropertyApi(final Context context, String custId,float customAttributeName,float customAttributeValue) {
+
+        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyUserPropertyApi(final Context context, String custId,int customAttributeName,int customAttributeValue) {
+
+        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyUserPropertyApi(final Context context, String custId,double customAttributeName,double customAttributeValue) {
+
+        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyUserPropertyApi(final Context context, String custId,long customAttributeName,long customAttributeValue) {
+
+        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
