@@ -11,7 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -274,7 +273,7 @@ public class UserFunctions{
     }
 */
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
-                                              String fcmToken,String ezPushNotiEnabled,LatLng latlng,
+                                              String fcmToken,String ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;

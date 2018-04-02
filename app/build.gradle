@@ -9,10 +9,8 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
-
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
     }
     buildTypes {
@@ -24,11 +22,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.emazify:emazify:1.15'
 
-   // compile 'com.oneway:onewayuser:1.0'
 }

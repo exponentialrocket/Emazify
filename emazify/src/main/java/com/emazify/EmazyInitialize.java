@@ -2,7 +2,6 @@ package com.emazify;
 
 import android.content.Context;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -83,10 +82,10 @@ public class EmazyInitialize{
 
 
     public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
-                                              String fcmToken, String ezPushNotiEnabled, LatLng latLng) {
+                                              String fcmToken, String ezPushNotiEnabled, String latLng) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,latLng,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,"",new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
