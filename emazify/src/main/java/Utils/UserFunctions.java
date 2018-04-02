@@ -1,15 +1,9 @@
 package Utils;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -30,9 +24,6 @@ import java.io.UnsupportedEncodingException;
 public class UserFunctions{
 
     private LocationManager locationManager;
-    private String provider;
-    Location location;
-    int lat ,lng;
 
     private static UserFunctions ourInstance = new UserFunctions();
 
@@ -63,13 +54,6 @@ public class UserFunctions{
 
         myServiceAsyncHttpClient = new SyncHttpClient();
         myServiceAsyncHttpClient.setTimeout(120000);
-
-        locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        // Define the criteria how to select the locatioin provider -> use
-        // default
-        Criteria criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, false);
-
 
         try{
             emaziCustId = Pref.getValue(mContext,Const.PREF_EmazyCID,"");
@@ -287,7 +271,6 @@ public class UserFunctions{
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.*/
-                @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(provider);
            // }
 
 
