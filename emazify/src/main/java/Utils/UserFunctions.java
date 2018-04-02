@@ -156,7 +156,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,float customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String CustId,String customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -181,7 +181,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,int customAttributeName,int customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String CustId,String customAttributeName,int customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -207,7 +207,7 @@ public class UserFunctions{
     }
 
 
-    public void emazifyUserProperty(String CustId,double customAttributeName,double customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String CustId,String customAttributeName,double customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -232,7 +232,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,long customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {

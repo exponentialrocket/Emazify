@@ -179,7 +179,7 @@ public class EmazyInitialize{
         });
     }
 
-  /*  public void callEmazifyUserPropertyApi(final Context context, String custId,float customAttributeName,float customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,float customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
@@ -224,7 +224,7 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,int customAttributeName,int customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,int customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
@@ -269,7 +269,7 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,double customAttributeName,double customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,double customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
@@ -314,7 +314,7 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,long customAttributeName,long customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,long customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
@@ -358,7 +358,6 @@ public class EmazyInitialize{
 
         });
     }
-*/
     public void callEmazifyLogOutApi(final Context context, String custId) {
         mUserFunctions.emazifyLogOut(custId,new JsonHttpResponseHandler() {
             @Override
