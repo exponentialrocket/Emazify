@@ -10,7 +10,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
 
     }
     buildTypes {
@@ -27,7 +26,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.emazify:emazify:1.15'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
 
    // compile 'com.oneway:onewayuser:1.0'
 }
