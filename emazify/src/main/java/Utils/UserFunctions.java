@@ -5,7 +5,6 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
@@ -258,7 +257,7 @@ public class UserFunctions{
     }
 
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
-                                              String fcmToken,String ezPushNotiEnabled,LatLng latlng,
+                                              String fcmToken,String ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
@@ -296,7 +295,7 @@ public class UserFunctions{
             jsonParams.put("ezUserAndroidManufacturer", utils.getAndroidManufacturer());
             jsonParams.put("androidVersion", utils.getOsVersion());
             jsonParams.put("ezSdkVersion", Const.SDK_Version);
-            jsonParams.put("ezUserAutoLocation", String.valueOf(latlng));
+            jsonParams.put("ezUserAutoLocation", latlng);
             jsonParams.put("source", "Android");
 
             showErrorLog("emazifyAutoSystemUserProperty Url " + EMAZIFY_USER_AUTO_PROPERTY_URL);
