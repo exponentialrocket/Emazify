@@ -7,6 +7,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.apache.http.Header;
 import org.json.JSONObject;
 
+import java.util.Map;
+
 import Utils.ConnectionDetector;
 import Utils.Const;
 import Utils.Pref;
@@ -367,6 +369,53 @@ public class EmazyInitialize{
                     //implement double click for disable button
                     if (jsonResult != null) {
                         showErrorLog("emazify Logout  Result==>" + jsonResult.toString());
+
+
+                    }
+                    else {
+
+
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void emazifyEvents(final Context context, String custId,String eventName,Map<String,Object> properties) {
+        mUserFunctions.emazifyEvents(custId,eventName,properties,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+                        showErrorLog("emazify Events  Result==>" + jsonResult.toString());
 
 
                     }

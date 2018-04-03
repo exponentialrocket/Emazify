@@ -1,8 +1,6 @@
 package Utils;
 
 import android.content.Context;
-import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -16,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 /**
  * Created by owc-android on 13/3/18.
@@ -40,6 +39,7 @@ public class UserFunctions{
     private static final String EMAZIFY_LOGIN_URL = "https://1ic84mlbk1.execute-api.ap-south-1.amazonaws.com/" + "User_Login_Live";
     private static final String EMAZIFY_USER_PROPERTY_URL = "https://hcbt0pcsd0.execute-api.ap-south-1.amazonaws.com/" + "User_Property_Live";
     private static final String EMAZIFY_USER_AUTO_PROPERTY_URL = "https://nl5zif7r9d.execute-api.ap-south-1.amazonaws.com/user_auto_system_property_live";
+    private static final String EMAZIFY_EVENTS = "https://7boo62w8mg.execute-api.ap-south-1.amazonaws.com/user_custom_event";
 
     private static String emaziCustId = "";
 
@@ -235,6 +235,8 @@ public class UserFunctions{
 
     }
 
+
+
     public void emazifyUserProperty(String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
@@ -261,26 +263,38 @@ public class UserFunctions{
 
     }
 
+    public void emazifyEvents(String CustId, String eventName, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
+
+        JSONObject jsonParams;
+        try {
+            jsonParams = new JSONObject();
+            //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
+            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
+            jsonParams.put("eventName", eventName);
+            jsonParams.put("properties", properties);
+
+            showErrorLog("EMAZIFY_EVENTS Url " + EMAZIFY_EVENTS);
+            showErrorLog("EMAZIFY_EVENTS Params " + jsonParams.toString());
+
+            StringEntity entity = new StringEntity(jsonParams.toString());
+            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
+            myAsyncHttpClient.addHeader("x-api-key", "nUcXZCYFut8W5dGYB8yge8RJtNPgb7guFVg7r200");
+            myAsyncHttpClient.post(mContext, EMAZIFY_EVENTS , entity, CONTENT_TYPE, responseHandler);
+        }
+        catch (JSONException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
-
-          /*  if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.*/
-           // }
-
-
-            // Initialize the location fields
-
 
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
