@@ -138,6 +138,7 @@ public class UserFunctions{
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
             jsonParams.put("customAttributeValue", customAttributeValue);
 
@@ -163,6 +164,7 @@ public class UserFunctions{
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
             jsonParams.put("customAttributeValue", customAttributeValue);
 
@@ -188,6 +190,7 @@ public class UserFunctions{
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
             jsonParams.put("customAttributeValue", customAttributeValue);
 
@@ -214,6 +217,7 @@ public class UserFunctions{
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
             jsonParams.put("customAttributeValue", customAttributeValue);
 
@@ -239,6 +243,7 @@ public class UserFunctions{
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
             jsonParams.put("customAttributeValue", customAttributeValue);
 
