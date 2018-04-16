@@ -11,7 +11,7 @@ public class Const {
     public static String CID;
     public static String PREF_FILE = "Emazify_Pref_File";
     public static final String PREF_EmazyCID = "emaziCID";
-    public static final String SDK_Version = "2.5";
+    public static final String SDK_Version = "2.6";
    // public static boolean isLive = BuildConfig.isLive;
 
 }

@@ -95,7 +95,7 @@ public class EmazyInitialize{
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
                     if (jsonResult != null) {
-                        showErrorLog("emazify login Result==>" + jsonResult.toString());
+                        showErrorLog("emazify autoSystemProperty Result==>" + jsonResult.toString());
 
                         Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
 
