@@ -4,6 +4,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.1"
+    flavorDimensions "default"
+
     lintOptions {
         abortOnError false
     }
@@ -13,6 +15,8 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -20,14 +24,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+
+        staging {
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            buildConfigField 'boolean', 'isLive', 'false'
+        }
+
+
+        live {
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            buildConfigField 'boolean', 'isLive', 'true'
+        }
+
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.loopj.android:android-async-http:1.4.8'
-    compile 'org.apache.httpcomponents:httpcore:4.3.2'
+    implementation 'com.loopj.android:android-async-http:1.4.8'
+    implementation 'org.apache.httpcomponents:httpcore:4.3.2'
+    implementation 'com.google.code.gson:gson:2.4'
+
 }
 
 
