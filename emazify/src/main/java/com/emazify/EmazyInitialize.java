@@ -87,6 +87,7 @@ public class EmazyInitialize{
                                               String fcmToken, String ezPushNotiEnabled, String latLng) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
+        Pref.setValue(context, Const.GCM_TOKEN, fcmToken);
         mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,latLng,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
