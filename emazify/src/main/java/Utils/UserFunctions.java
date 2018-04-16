@@ -73,7 +73,9 @@ public class UserFunctions{
 
         }
 
+/*
         if(!isLive){
+*/
             EMAZIFY_LOGIN_URL = "https://qivs929o3a.execute-api.ap-south-1.amazonaws.com/user_login_api";
             EMAZIFY_USER_PROPERTY_URL = "https://immrpob4v7.execute-api.ap-south-1.amazonaws.com/user_property";
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
@@ -84,7 +86,7 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "w8KYpQLT0o3Wmc41qFMqcmFlsHLmrz4CvdfEps10";
             EMAZIFY_EVENTS_KEY = "nUcXZCYFut8W5dGYB8yge8RJtNPgb7guFVg7r200";
 
-        }else{
+     /*  }else{
             EMAZIFY_LOGIN_URL = "https://m0vd9ivjpj.execute-api.ap-south-1.amazonaws.com/user_login_api_live";
             EMAZIFY_USER_PROPERTY_URL = "https://fkhmt0jdjj.execute-api.ap-south-1.amazonaws.com/user_property_live";
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://jdypv37xbl.execute-api.ap-south-1.amazonaws.com/user_auto_system_property_live";
@@ -95,7 +97,7 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "rA5dTpW9xQ6wcGAfBRFjZN9l37Ptyk941ZTiLo26";
             EMAZIFY_EVENTS_KEY = "5dyLY8WlFReBpkk2mrpt12caNum8I2S18JKzkYp0";
 
-        }
+        }*/
     }
 
 

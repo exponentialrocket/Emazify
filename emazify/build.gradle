@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.1"
-    flavorDimensions "default"
+   // flavorDimensions "default"
 
     lintOptions {
         abortOnError false
@@ -25,7 +25,7 @@ android {
         }
     }
 
-    productFlavors {
+  /*  productFlavors {
 
         staging {
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -38,7 +38,7 @@ android {
             buildConfigField 'boolean', 'isLive', 'true'
         }
 
-    }
+    }*/
 }
 
 dependencies {
