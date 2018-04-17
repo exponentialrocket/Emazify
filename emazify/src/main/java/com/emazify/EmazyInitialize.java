@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -89,13 +92,26 @@ public class EmazyInitialize{
         });
     }
 
-    public void sendNotification(Context context,String message) {
+    public boolean isEmazifyNotification(@NonNull RemoteMessage msg) {
+
+        Map<String, String> receivedMap = msg.getData();
+
+        if(receivedMap.get("key").equals("campaignNotification")){
+            return true;
+        }
+
+        return false;
+    }
+
+    public void sendNotification(Context context,RemoteMessage msg) {
 /*
 
         Intent intent = new Intent(this, .class);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 */
+        Map<String, String> receivedMap = msg.getData();
+        String message = receivedMap.get("message");
 
 
         //OWC-960 #vijayrajput 03-12-2015 02-00-pm
@@ -105,7 +121,7 @@ public class EmazyInitialize{
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.back_white_icon)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(context.getResources().getString(R.string.app_name))
                 .setContentText(message)
                 .setAutoCancel(true)
