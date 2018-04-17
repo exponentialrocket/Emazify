@@ -27,8 +27,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("","Receive clear Intent"+intent.getData().toString());
-        Log.e("","Receive clear Intent"+intent.toString());
+
+        Log.e("","Receive clear Intent"+intent.getExtras());
 
 
         String campaignUniqId = intent.getStringExtra("campaignDataUniqueId");
