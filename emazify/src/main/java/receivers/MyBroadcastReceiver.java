@@ -28,19 +28,13 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        String campaignUniqId = intent.getStringExtra("campaignDataUniqueId");
 
-
-        if(intent.hasExtra("campaignDataUniqueId")){
-            Toast.makeText(context,"campaignDataUniqueId",Toast.LENGTH_LONG).show();
-        }else if(intent.hasExtra("click")){
-            Toast.makeText(context,"click",Toast.LENGTH_LONG).show();
+        if(intent.hasExtra("notiClear")){
+            EmazifyNotiUpdate(context,campaignUniqId,"1");
+        }else if(intent.hasExtra("notiClick")){
+            EmazifyNotiUpdate(context,campaignUniqId,"2");
         }
-      //  String campaignUniqId = intent.getStringExtra("campaignDataUniqueId");
-  //      Toast.makeText(context,campaignUniqId,Toast.LENGTH_SHORT).show();
-
-      //  EmazifyNotiUpdate(context,campaignUniqId,"1");
-
-
     }
 
     public void EmazifyNotiUpdate(final Context context, String campaignUniqueId,String notiEvent) {
