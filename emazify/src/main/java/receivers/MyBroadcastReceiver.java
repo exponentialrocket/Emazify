@@ -27,7 +27,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("","Receive clear Intent"+intent.getData().getUserInfo());
+        Log.e("","Receive clear Intent"+intent.getData());
 
         String campaignUniqId = intent.getStringExtra("campaignDataUniqueId");
         Toast.makeText(context,campaignUniqId,Toast.LENGTH_SHORT).show();
