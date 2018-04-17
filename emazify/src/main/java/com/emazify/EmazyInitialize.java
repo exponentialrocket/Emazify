@@ -121,6 +121,7 @@ public class EmazyInitialize{
       //  PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 
         Intent intent = new Intent(context, MyBroadcastReceiver.class);
+        intent.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
 
 
