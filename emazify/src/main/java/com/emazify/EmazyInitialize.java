@@ -25,6 +25,7 @@ import Utils.Const;
 import Utils.Pref;
 import Utils.UserFunctions;
 import Utils.utils;
+import receivers.MyBroadcastReceiver;
 
 /**
  * Created by owc-android on 15/3/18.
@@ -117,7 +118,12 @@ public class EmazyInitialize{
         //OWC-960 #vijayrajput 03-12-2015 02-00-pm
         //fix issue on multiple notification click and ride detail not load properly
         int requestID = (int) System.currentTimeMillis();
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+      //  PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+
+        Intent intent = new Intent(context, MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
+
+
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
@@ -129,9 +135,13 @@ public class EmazyInitialize{
                 .setStyle(bigTextStyle)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
+
+        notificationBuilder.setDeleteIntent(pendingIntent);
         notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(requestID/* ID of notification */, notificationBuilder.build());
+
+
 
     }
 
