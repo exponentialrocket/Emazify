@@ -28,11 +28,10 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.e("","Receive clear Intent"+intent.getExtras());
-
+        Toast.makeText(context,"Receive clear Intent"+intent.getExtras().toString(),Toast.LENGTH_LONG).show();
 
         String campaignUniqId = intent.getStringExtra("campaignDataUniqueId");
-        Toast.makeText(context,campaignUniqId,Toast.LENGTH_SHORT).show();
+  //      Toast.makeText(context,campaignUniqId,Toast.LENGTH_SHORT).show();
 
         EmazifyNotiUpdate(context,campaignUniqId,"1");
 
