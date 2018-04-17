@@ -121,9 +121,11 @@ public class EmazyInitialize{
       //  PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 
         Intent intent = new Intent(context, MyBroadcastReceiver.class);
+        Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
         intent.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
+        intent1.putExtra("click","click");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
-        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent, 0);
+        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
