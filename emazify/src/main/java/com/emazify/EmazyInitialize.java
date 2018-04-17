@@ -1,6 +1,14 @@
 package com.emazify;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -81,7 +89,35 @@ public class EmazyInitialize{
         });
     }
 
+    public void sendNotification(Context context,String message) {
+/*
 
+        Intent intent = new Intent(this, .class);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+*/
+
+
+        //OWC-960 #vijayrajput 03-12-2015 02-00-pm
+        //fix issue on multiple notification click and ride detail not load properly
+        int requestID = (int) System.currentTimeMillis();
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.drawable.back_white_icon)
+                .setContentTitle(context.getResources().getString(R.string.app_name))
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                .setStyle(bigTextStyle)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+        notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(requestID/* ID of notification */, notificationBuilder.build());
+
+    }
 
     public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
                                               String fcmToken, String ezPushNotiEnabled, String latLng) {
