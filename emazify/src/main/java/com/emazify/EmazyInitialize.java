@@ -124,6 +124,7 @@ public class EmazyInitialize{
         Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
         intent.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
         intent.putExtra("notiClear","clear");
+        intent1.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
         intent1.putExtra("notiClick","click");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
         PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
