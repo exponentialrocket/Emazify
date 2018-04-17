@@ -123,7 +123,7 @@ public class EmazyInitialize{
         Intent intent = new Intent(context, MyBroadcastReceiver.class);
         intent.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
-
+        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent, 0);
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
@@ -131,11 +131,11 @@ public class EmazyInitialize{
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(context.getResources().getString(R.string.app_name))
                 .setContentText(message)
-                .setAutoCancel(true)
+                .setAutoCancel(false)
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setStyle(bigTextStyle)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent1);
 
         notificationBuilder.setDeleteIntent(pendingIntent);
         notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
