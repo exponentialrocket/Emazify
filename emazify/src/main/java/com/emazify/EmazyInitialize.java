@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +18,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -47,16 +50,19 @@ public class EmazyInitialize{
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         mUserFunctions.emazifyLogin(custId,new JsonHttpResponseHandler() {
+
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
-                        showErrorLog("emazify login Result==>" + jsonResult.toString());
+                    if (response != null) {
+                        showErrorLog("emazify login Result==>" + response.toString());
 
-                        Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
+                        Pref.setValue(context, Const.PREF_EmazyCID,response.getJSONObject(0).getString("emazyCustomerId"));
+
 
                     }
                     else {
@@ -72,24 +78,9 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
     }
 
@@ -156,18 +147,28 @@ public class EmazyInitialize{
 
     }
 
+  /*  Handler mainHandler = new Handler(Looper.getMainLooper());
+    Runnable myRunnable = new Runnable() {
+        @Override
+        public void run() {
+            //Code that uses AsyncHttpClient in your case ConsultaCaract()
+        }
+    };*/
+
+
     public void callAppDetectApi(final Context context) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
-                        showErrorLog("emazify callAppDetectApi Result==>" + jsonResult.toString());
+                    if (response != null) {
+                        showErrorLog("emazify callAppDetectApi Result==>" + response.toString());
                     }
                     else {
 
@@ -182,24 +183,9 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
     }
 
@@ -209,16 +195,17 @@ public class EmazyInitialize{
         mUserFunctions = new UserFunctions(context);
         Pref.setValue(context, Const.GCM_TOKEN, fcmToken);
         mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,latLng,new JsonHttpResponseHandler() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
-                        showErrorLog("emazify autoSystemProperty Result==>" + jsonResult.toString());
+                    if (response != null) {
+                        showErrorLog("emazify autoSystemProperty Result==>" + response.toString());
 
-                        Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
+                        Pref.setValue(context, Const.PREF_EmazyCID,response.getJSONObject(0).getString("emazyCustomerId"));
 
                     }
                     else {
@@ -234,43 +221,32 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
+
     }
 
 
     public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,String customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
+                    if (response != null) {
+                        showErrorLog("emazify UserProperty Result==>"+response.toString());
 
-                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
 
                     }
                     else {
+
+
                     }
 
                 }
@@ -281,23 +257,9 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
     }
 
@@ -305,17 +267,19 @@ public class EmazyInitialize{
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
+                    if (response != null) {
+                        showErrorLog("emazify UserProperty Result==>"+response.toString());
 
-                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
 
                     }
                     else {
+
+
                     }
 
                 }
@@ -326,41 +290,30 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
     }
+
 
     public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,int customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
+                    if (response != null) {
+                        showErrorLog("emazify UserProperty Result==>"+response.toString());
 
-                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
 
                     }
                     else {
+
+
                     }
 
                 }
@@ -371,41 +324,30 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
+
     }
 
     public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,double customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
+                    if (response != null) {
+                        showErrorLog("emazify UserProperty Result==>"+response.toString());
 
-                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
 
                     }
                     else {
+
+
                     }
 
                 }
@@ -416,41 +358,30 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
+
     }
 
     public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,long customAttributeValue) {
 
         mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
+                    if (response != null) {
+                        showErrorLog("emazify UserProperty Result==>"+response.toString());
 
-                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
 
                     }
                     else {
+
+
                     }
 
                 }
@@ -461,35 +392,23 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
     }
+
     public void callEmazifyLogOutApi(final Context context, String custId) {
         mUserFunctions.emazifyLogOut(custId,new JsonHttpResponseHandler() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
-                        showErrorLog("emazify Logout  Result==>" + jsonResult.toString());
+                    if (response != null) {
+                        showErrorLog("emazify Logout  Result==>" + response.toString());
 
 
                     }
@@ -506,38 +425,24 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
+
     }
 
     public void emazifyEvents(final Context context, String custId,String eventName,Map<String,Object> properties) {
         mUserFunctions.emazifyEvents(custId,eventName,properties,new JsonHttpResponseHandler() {
+
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
-                super.onSuccess(statusCode, headers, jsonResult);
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                super.onSuccess(statusCode, headers, response);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (jsonResult != null) {
-                        showErrorLog("emazify Events  Result==>" + jsonResult.toString());
-
+                    if (response != null) {
+                        showErrorLog("emazify Events  Result==>" + response.toString());
 
                     }
                     else {
@@ -553,25 +458,11 @@ public class EmazyInitialize{
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
             }
-
         });
+
     }
 
 
