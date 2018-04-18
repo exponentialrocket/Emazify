@@ -28,21 +28,17 @@ public class utils{
       /*  }*/
     }
 
-    public static String getVersion(Context context) {
-
-        PackageManager manager = context.getPackageManager();
-        PackageInfo info = null;
-        String version = "";
+    public static String getAppVersionName(Context context) {
+        String appVersion;
         try {
-            info = manager.getPackageInfo(
-                    context.getPackageName(), 0);
-            version = info.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            appVersion = "" + packageInfo.versionName;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            appVersion = "" + 1;
             e.printStackTrace();
         }
-        showErrorLog("App Version", version);
-        return version;
-
+        return appVersion;
     }
 
     @SuppressLint("MissingPermission")

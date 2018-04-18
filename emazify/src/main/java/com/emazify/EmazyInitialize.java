@@ -97,7 +97,7 @@ public class EmazyInitialize{
 
         Map<String, String> receivedMap = msg.getData();
 
-        if(receivedMap.get("key").equals("campaignNotification")){
+        if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
             return true;
         }
 
@@ -112,6 +112,12 @@ public class EmazyInitialize{
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 */
         Map<String, String> receivedMap = msg.getData();
+
+        if(receivedMap.get("key").equals("silent")){
+            callAppDetectApi(context);
+        return;
+        }
+
         String message = receivedMap.get("message");
 
 
@@ -150,6 +156,53 @@ public class EmazyInitialize{
 
     }
 
+    public void callAppDetectApi(final Context context) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+                        showErrorLog("emazify callAppDetectApi Result==>" + jsonResult.toString());
+                    }
+                    else {
+
+
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
     public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
                                               String fcmToken, String ezPushNotiEnabled, String latLng) {
         mConnectionDetector = new ConnectionDetector(context);
@@ -164,6 +217,11 @@ public class EmazyInitialize{
                     //implement double click for disable button
                     if (jsonResult != null) {
                         showErrorLog("emazify autoSystemProperty Result==>" + jsonResult.toString());
+
+
+
+
+
 
                         Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
 

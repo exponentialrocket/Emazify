@@ -45,12 +45,14 @@ public class UserFunctions{
     private static String EMAZIFY_USER_AUTO_PROPERTY_URL = "";
     private static String EMAZIFY_EVENTS = "";
     private static String EMAZIFY_NOTI_UPDATE_URL = "";
+    private static String EMAZIFY_APP_DETECT_URL = "";
 
     private static String EMAZIFY_LOGIN_KEY = "";
     private static String EMAZIFY_USER_PROPERTY_KEY = "";
     private static String EMAZIFY_USER_AUTO_PROPERTY_KEY = "";
     private static String EMAZIFY_EVENTS_KEY = "";
     private static String EMAZIFY_NOTI_UPDATE_KEY = "";
+    private static String EMAZIFY_APP_DETECT_KEY = "";
 
     private static String emaziCustId = "";
 
@@ -83,12 +85,17 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
             EMAZIFY_EVENTS = "https://7boo62w8mg.execute-api.ap-south-1.amazonaws.com/user_custom_event";
             EMAZIFY_NOTI_UPDATE_URL = "https://nl1sezi3n1.execute-api.ap-south-1.amazonaws.com/campaign_notification_event_update";
+            EMAZIFY_APP_DETECT_URL = "https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected";
+
+        https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected
 
             EMAZIFY_LOGIN_KEY = "3EfcZaDxBO3WN8HiRauwv9KmQrEQSaU67yK4Bloh";
             EMAZIFY_USER_PROPERTY_KEY = "R6V5S8435O7UfN6Cl4vQb1pcc5y9V2YJ4SziRsQr";
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "w8KYpQLT0o3Wmc41qFMqcmFlsHLmrz4CvdfEps10";
             EMAZIFY_EVENTS_KEY = "nUcXZCYFut8W5dGYB8yge8RJtNPgb7guFVg7r200";
             EMAZIFY_NOTI_UPDATE_KEY= "Zc9NxSUJ6d7kkerODyzvI8twTyGTrMWz9vpVYOES";
+            EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
+
      /*  }else{
             EMAZIFY_LOGIN_URL = "https://m0vd9ivjpj.execute-api.ap-south-1.amazonaws.com/user_login_api_live";
             EMAZIFY_USER_PROPERTY_URL = "https://fkhmt0jdjj.execute-api.ap-south-1.amazonaws.com/user_property_live";
@@ -300,6 +307,33 @@ public class UserFunctions{
 
     }
 
+    public void emazifyAppDetect(AsyncHttpResponseHandler responseHandler) {
+
+        JSONObject jsonParams;
+        try {
+            jsonParams = new JSONObject();
+
+            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("appVersion", utils.getAppVersionName(mContext));
+            jsonParams.put("pushNotificationEnabled", "1");
+            jsonParams.put("imei", utils.getDeviceIMEI(mContext));
+            jsonParams.put("emazyCustomerId", emaziCustId);
+
+            showErrorLog("emazify emazifyAppDetect Url " + EMAZIFY_APP_DETECT_URL);
+            showErrorLog("emazify emazifyAppDetect Params " + jsonParams.toString());
+
+            StringEntity entity = new StringEntity(String.valueOf(jsonParams));
+            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
+            myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_APP_DETECT_KEY);
+            myAsyncHttpClient.post(mContext, EMAZIFY_APP_DETECT_URL , entity, CONTENT_TYPE, responseHandler);
+        }
+        catch (JSONException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     public void emazifyNotiUpdate(String campaignUniqueId,String notiEvent,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
@@ -368,7 +402,7 @@ public class UserFunctions{
             jsonParams.put("osName", utils.getAndroidOsName());
             jsonParams.put("ezAndroidFcmRegToken", fcmToken);
             jsonParams.put("ezPushNotificationEnabled", ezPushNotiEnabled);
-            jsonParams.put("userAppVersion", utils.getVersion(mContext));
+            jsonParams.put("userAppVersion", utils.getAppVersionName(mContext));
             jsonParams.put("ezUserAndroidModel", utils.getDeviceName());
             jsonParams.put("androidDeviceId", utils.getDeviceId(mContext));
             jsonParams.put("ezUserAndroidManufacturer", utils.getAndroidManufacturer());
