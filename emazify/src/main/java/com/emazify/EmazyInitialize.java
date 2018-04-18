@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -36,6 +38,7 @@ public class EmazyInitialize{
     private ConnectionDetector mConnectionDetector;
     private UserFunctions mUserFunctions;
     private static final String TAG = EmazyInitialize.class.getSimpleName();
+    private final int SPLASH_DISPLAY_LENGTH = 5000;
 
     private static EmazyInitialize ourInstance = new EmazyInitialize();
 
@@ -93,18 +96,21 @@ public class EmazyInitialize{
         });
     }
 
-    public boolean isEmazifyNotification(@NonNull RemoteMessage msg) {
+    public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg) {
 
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
+            if(receivedMap.get("key").equals("silent")){
+                callAppDetectApi(context);
+            }
             return true;
         }
 
         return false;
     }
 
-    public void sendNotification(Context context,RemoteMessage msg) {
+    public void sendNotification(final Context context, RemoteMessage msg) {
 /*
 
         Intent intent = new Intent(this, .class);
@@ -114,7 +120,7 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("silent")){
-            callAppDetectApi(context);
+
         return;
         }
 
