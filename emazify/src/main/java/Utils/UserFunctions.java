@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.BuildConfig;
-import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 
 import org.apache.http.entity.StringEntity;
@@ -19,8 +18,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
-import cz.msebera.android.httpclient.HttpEntity;
 
 import static Utils.Const.*;
 
@@ -121,10 +118,12 @@ public class UserFunctions{
     public void emazifyLogin(String CustId,AsyncHttpResponseHandler responseHandler) {
 
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+
+
+
+            jsonParams = new JSONObject();
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
             jsonParams.put("emailId", "");
@@ -140,10 +139,9 @@ public class UserFunctions{
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
 
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_LOGIN_KEY);
-          //  myAsyncHttpClient.post(mContext, EMAZIFY_LOGIN_URL , jsonParams, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_LOGIN_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_LOGIN_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -155,10 +153,11 @@ public class UserFunctions{
 
     public void emazifyLogOut(String CustId,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+
+
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -172,11 +171,9 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_LOGIN_KEY);
-            //myAsyncHttpClient.post(mContext, EMAZIFY_LOGIN_URL , entity, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_LOGIN_URL, jsonParams, responseHandler);
-
+            myAsyncHttpClient.post(mContext, EMAZIFY_LOGIN_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -184,10 +181,9 @@ public class UserFunctions{
 
     public void emazifyUserProperty(String CustId,String customAttributeName,String customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -201,10 +197,9 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
-          //  myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_USER_PROPERTY_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -212,10 +207,9 @@ public class UserFunctions{
 
     public void emazifyUserProperty(String CustId,String customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -229,9 +223,9 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
-            myAsyncHttpClient.post(EMAZIFY_USER_PROPERTY_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -239,10 +233,9 @@ public class UserFunctions{
 
     public void emazifyUserProperty(String CustId,String customAttributeName,int customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -256,9 +249,9 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
-            myAsyncHttpClient.post(EMAZIFY_USER_PROPERTY_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -267,10 +260,9 @@ public class UserFunctions{
 
     public void emazifyUserProperty(String CustId,String customAttributeName,double customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -284,36 +276,35 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
-            myAsyncHttpClient.post(EMAZIFY_USER_PROPERTY_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
     }
 
-            public void emazifyUserProperty(String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
-                RequestParams jsonParams;
+        JSONObject jsonParams;
+        try {
+            jsonParams = new JSONObject();
+            //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
+            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
+            jsonParams.put("customAttributeName", customAttributeName);
+            jsonParams.put("customAttributeValue", customAttributeValue);
 
-                try {
-                    jsonParams = new RequestParams();
-                    //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-                    jsonParams.put("accountId", "onewaycab");
-                    jsonParams.put("customerId", CustId);
-                    jsonParams.put("emazyCustomerId", emaziCustId);
-                    jsonParams.put("customAttributeName", customAttributeName);
-                    jsonParams.put("customAttributeValue", customAttributeValue);
-
-                    showErrorLog("emazify user property Url " + EMAZIFY_USER_PROPERTY_URL);
-                    showErrorLog("emazify user property Params " + jsonParams.toString());
+            showErrorLog("emazify user property Url " + EMAZIFY_USER_PROPERTY_URL);
+            showErrorLog("emazify user property Params " + jsonParams.toString());
 
             StringEntity entity = new StringEntity(String.valueOf(jsonParams));
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
-                    myAsyncHttpClient.post(EMAZIFY_USER_PROPERTY_URL, jsonParams, responseHandler);
-                }
-        catch (UnsupportedEncodingException e) {
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
+        }
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -321,10 +312,9 @@ public class UserFunctions{
 
     public void emazifyAppDetect(AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
 
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("appVersion", utils.getAppVersion(mContext));
@@ -338,11 +328,9 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(String.valueOf(jsonParams));
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_APP_DETECT_KEY);
-         //   myAsyncHttpClient.post(mContext, EMAZIFY_APP_DETECT_URL , (HttpEntity) entity, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_APP_DETECT_URL, jsonParams, responseHandler);
-
+            myAsyncHttpClient.post(mContext, EMAZIFY_APP_DETECT_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
@@ -351,10 +339,9 @@ public class UserFunctions{
 
     public void emazifyNotiUpdate(String campaignUniqueId,String notiEvent,AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+            jsonParams = new JSONObject();
 
             jsonParams.put("campaignDataUniqueId", campaignUniqueId);
             jsonParams.put("notificationEvent", notiEvent);
@@ -365,20 +352,15 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(String.valueOf(jsonParams));
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_NOTI_UPDATE_KEY);
-           // myAsyncHttpClient.post(mContext, EMAZIFY_NOTI_UPDATE_URL , entity, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_NOTI_UPDATE_URL, jsonParams, responseHandler);
+            myAsyncHttpClient.post(mContext, EMAZIFY_NOTI_UPDATE_URL , entity, CONTENT_TYPE, responseHandler);
         }
-        catch (UnsupportedEncodingException e) {
+        catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
     }
 
     public void emazifyEvents(String CustId, String eventName, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
-
-        RequestParams jsonParams;
-
-
 
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("accountId", "onewaycab");
@@ -393,19 +375,25 @@ public class UserFunctions{
         showErrorLog("EMAZIFY_EVENTS Url " + EMAZIFY_EVENTS);
         showErrorLog("EMAZIFY_EVENTS Params " + String.valueOf(loc.toString()));
 
-        jsonParams = new RequestParams(loc);
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(loc);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
         myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_EVENTS_KEY);
-        myAsyncHttpClient.post(EMAZIFY_EVENTS, jsonParams, responseHandler);
+        myAsyncHttpClient.post(mContext, EMAZIFY_EVENTS , entity, CONTENT_TYPE, responseHandler);
     }
 
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
                                               String fcmToken,String ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
-        RequestParams jsonParams;
-
+        JSONObject jsonParams;
         try {
-            jsonParams = new RequestParams();
+
+            jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("customerId", CustId);
@@ -432,9 +420,8 @@ public class UserFunctions{
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
             myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_AUTO_PROPERTY_KEY);
-            //myAsyncHttpClient.post(mContext, EMAZIFY_USER_AUTO_PROPERTY_URL, entity, CONTENT_TYPE, responseHandler);
-            myAsyncHttpClient.post(EMAZIFY_USER_AUTO_PROPERTY_URL, jsonParams, responseHandler);
-        } catch (UnsupportedEncodingException e) {
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_AUTO_PROPERTY_URL, entity, CONTENT_TYPE, responseHandler);
+        } catch (JSONException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }

@@ -10,7 +10,6 @@ import com.emazify.EmazyInitialize;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -42,19 +41,17 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         mUserFunctions.emazifyNotiUpdate(campaignUniqueId,notiEvent,new JsonHttpResponseHandler() {
-
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
                 try {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
-                    if (response != null) {
-                        showErrorLog("emazifyNotiUpdate Result==>" + response.toString());
+                    if (jsonResult != null) {
+                        showErrorLog("emazifyNotiUpdate Result==>" + jsonResult.toString());
 
                     }
                     else {
-
 
                     }
 
@@ -66,11 +63,25 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             }
 
             @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
-        });
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
 
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
     }
 
     private void showErrorLog(String messageString) {
