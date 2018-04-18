@@ -15,9 +15,14 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.SyncHttpClient;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -29,6 +34,8 @@ import Utils.UserFunctions;
 import Utils.utils;
 import receivers.MyBroadcastReceiver;
 
+import static Utils.Const.PREF_EmazyCID;
+
 /**
  * Created by owc-android on 15/3/18.
  */
@@ -39,6 +46,10 @@ public class EmazyInitialize{
     private UserFunctions mUserFunctions;
     private static final String TAG = EmazyInitialize.class.getSimpleName();
     private final int SPLASH_DISPLAY_LENGTH = 5000;
+    private final AsyncHttpClient aClient = new SyncHttpClient();
+    private static String EMAZIFY_APP_DETECT_URL = "https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected";
+    private static String emaziCustId = "";
+    private static String EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
 
     private static EmazyInitialize ourInstance = new EmazyInitialize();
 
@@ -110,6 +121,8 @@ public class EmazyInitialize{
         return false;
     }
 
+
+
     public void sendNotification(final Context context, RemoteMessage msg) {
 /*
 
@@ -164,8 +177,62 @@ public class EmazyInitialize{
 
     public void callAppDetectApi(final Context context) {
         mConnectionDetector = new ConnectionDetector(context);
-        mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
+        //mUserFunctions = new UserFunctions(context);
+        RequestParams jsonParams = new RequestParams();
+
+        try{
+            emaziCustId = Pref.getValue(context, PREF_EmazyCID,"");
+
+        }catch (NullPointerException e){
+
+        }catch (Exception e){
+
+        }
+
+        jsonParams.put("accountId", "onewaycab");
+        jsonParams.put("appVersion", utils.getAppVersion(context));
+        jsonParams.put("pushNotificationEnabled", "1");
+        jsonParams.put("imei", utils.getDeviceIMEI(context));
+        jsonParams.put("emazyCustomerId", emaziCustId);
+        aClient.addHeader("X-Api-Key", EMAZIFY_APP_DETECT_KEY);
+
+
+        aClient.post(EMAZIFY_APP_DETECT_URL,jsonParams, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+              //  sendBroadcast(new Intent(IntentServiceSample.ACTION_START));
+                Log.e("EMAZIFY", "onStart");
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.e("EMAZIFY","onSuccess");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                Log.e("EMAZIFY", "onFailure");
+            }
+
+            @Override
+            public void onCancel() {
+                Log.e("EMAZIFY", "onCancel");
+            }
+
+            @Override
+            public void onRetry(int retryNo) {
+                Log.e("EMAZIFY", String.format("onRetry: %d", retryNo));
+            }
+
+            @Override
+            public void onFinish() {
+                Log.e("EMAZIFY", "onFinish");
+            }
+        });
+    }
+
+    /*    mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -206,8 +273,8 @@ public class EmazyInitialize{
 
             }
 
-        });
-    }
+        });*/
+
 
     public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
                                               String fcmToken, String ezPushNotiEnabled, String latLng) {
