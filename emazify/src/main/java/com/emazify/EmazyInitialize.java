@@ -218,11 +218,6 @@ public class EmazyInitialize{
                     if (jsonResult != null) {
                         showErrorLog("emazify autoSystemProperty Result==>" + jsonResult.toString());
 
-
-
-
-
-
                         Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
 
                     }

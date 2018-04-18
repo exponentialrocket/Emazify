@@ -28,14 +28,14 @@ public class utils{
       /*  }*/
     }
 
-    public static String getAppVersionName(Context context) {
+    public static String getAppVersion(Context context) {
         String appVersion;
         try {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            appVersion = "" + packageInfo.versionName;
+            appVersion = "" + packageInfo.versionCode;
         }
         catch (PackageManager.NameNotFoundException e) {
-            appVersion = "" + 1;
+            appVersion = Integer.toString(1);
             e.printStackTrace();
         }
         return appVersion;

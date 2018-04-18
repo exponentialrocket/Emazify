@@ -102,12 +102,15 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://jdypv37xbl.execute-api.ap-south-1.amazonaws.com/user_auto_system_property_live";
             EMAZIFY_EVENTS = "https://jyu38ju154.execute-api.ap-south-1.amazonaws.com/user_custom_event_live";
             EMAZIFY_NOTI_UPDATE_URL = "https://nl1sezi3n1.execute-api.ap-south-1.amazonaws.com/campaign_notification_event_update_live";
+            EMAZIFY_APP_DETECT_URL = "https://7vt5cvw6r5.execute-api.ap-south-1.amazonaws.com/update_app_detected_live";
+
 
             EMAZIFY_LOGIN_KEY = "I9zNQdZPf96poDtXCRmNW8UeDU9qW0j79wu76Cig";
             EMAZIFY_USER_PROPERTY_KEY = "296kOXrkjv3IPyvOYzKf34Tt04IauYTY7zVlfXjm";
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "rA5dTpW9xQ6wcGAfBRFjZN9l37Ptyk941ZTiLo26";
             EMAZIFY_EVENTS_KEY = "5dyLY8WlFReBpkk2mrpt12caNum8I2S18JKzkYp0";
             EMAZIFY_NOTI_UPDATE_KEY= "LJhteNWdIE8BvvYL8Geji6k6DiwAT1VSlNQqSeFj";
+            EMAZIFY_APP_DETECT_KEY= "xfPLSMavRR3409W4wkS9f6YHI9gdAlFB7QfH552H";
         }*/
     }
 
@@ -314,7 +317,7 @@ public class UserFunctions{
             jsonParams = new JSONObject();
 
             jsonParams.put("accountId", "onewaycab");
-            jsonParams.put("appVersion", utils.getAppVersionName(mContext));
+            jsonParams.put("appVersion", utils.getAppVersion(mContext));
             jsonParams.put("pushNotificationEnabled", "1");
             jsonParams.put("imei", utils.getDeviceIMEI(mContext));
             jsonParams.put("emazyCustomerId", emaziCustId);
@@ -402,7 +405,7 @@ public class UserFunctions{
             jsonParams.put("osName", utils.getAndroidOsName());
             jsonParams.put("ezAndroidFcmRegToken", fcmToken);
             jsonParams.put("ezPushNotificationEnabled", ezPushNotiEnabled);
-            jsonParams.put("userAppVersion", utils.getAppVersionName(mContext));
+            jsonParams.put("userAppVersion", utils.getAppVersion(mContext));
             jsonParams.put("ezUserAndroidModel", utils.getDeviceName());
             jsonParams.put("androidDeviceId", utils.getDeviceId(mContext));
             jsonParams.put("ezUserAndroidManufacturer", utils.getAndroidManufacturer());
