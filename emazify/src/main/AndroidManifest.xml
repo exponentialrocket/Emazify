@@ -23,6 +23,11 @@ android:supportsRtl="true"
         </intent-filter>-->
     </receiver>
 
+    <service
+        android:name="Services.AppDetectservice"
+        android:enabled="true"
+        android:exported="true"/>
+
 </application>
 
     </manifest>
