@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
@@ -112,14 +113,13 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
-            if(receivedMap.get("key").equals("silent")){
-                callAppDetectApi(context);
-            }
+
             return true;
         }
 
         return false;
     }
+
 
 
 
@@ -133,7 +133,7 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("silent")){
-
+                callAppDetectApi(context);
         return;
         }
 
@@ -195,7 +195,6 @@ public class EmazyInitialize{
         jsonParams.put("imei", utils.getDeviceIMEI(context));
         jsonParams.put("emazyCustomerId", emaziCustId);
         aClient.addHeader("X-Api-Key", EMAZIFY_APP_DETECT_KEY);
-
 
         aClient.post(EMAZIFY_APP_DETECT_URL,jsonParams, new AsyncHttpResponseHandler() {
             @Override
