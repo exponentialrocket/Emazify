@@ -310,7 +310,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyAppDetect(AsyncHttpResponseHandler responseHandler) {
+    public void  emazifyAppDetect(AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -318,7 +318,7 @@ public class UserFunctions{
 
             jsonParams.put("accountId", "onewaycab");
             jsonParams.put("appVersion", utils.getAppVersion(mContext));
-            jsonParams.put("pushNotificationEnabled", "1");
+            jsonParams.put("pushNotificationEnabled", true);
             jsonParams.put("imei", utils.getDeviceIMEI(mContext));
             jsonParams.put("emazyCustomerId", emaziCustId);
 
@@ -387,7 +387,7 @@ public class UserFunctions{
     }
 
     public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
-                                              String fcmToken,String ezPushNotiEnabled,String latlng,
+                                              String fcmToken,Boolean ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;

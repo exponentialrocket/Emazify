@@ -105,10 +105,7 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
-            if(receivedMap.get("key").equals("silent")){
-                context.startService(new Intent(context, AppDetectservice.class));
 
-            }
             return true;
         }
 
@@ -127,8 +124,7 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("silent")){
-
-                return;
+                context.startService(new Intent(context, AppDetectservice.class));
         }
 
         String message = receivedMap.get("message");
@@ -171,7 +167,7 @@ public class EmazyInitialize{
 
 
     public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
-                                              String fcmToken, String ezPushNotiEnabled, String latLng) {
+                                              String fcmToken, Boolean ezPushNotiEnabled, String latLng) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         Pref.setValue(context, Const.GCM_TOKEN, fcmToken);
