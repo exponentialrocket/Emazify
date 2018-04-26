@@ -50,10 +50,10 @@ public class EmazyInitialize{
         return ourInstance;
     }
 
-    public void callEmazifyLoginApi(final Context context, String custId) {
+    public void callEmazifyLoginApi(final Context context, String custId, String mobNo) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyLogin(custId,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyLogin(custId,mobNo,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -448,8 +448,8 @@ public class EmazyInitialize{
 
         });
     }
-    public void callEmazifyLogOutApi(final Context context, String custId) {
-        mUserFunctions.emazifyLogOut(custId,new JsonHttpResponseHandler() {
+    public void callEmazifyLogOutApi(final Context context, String custId,String mobNo) {
+        mUserFunctions.emazifyLogOut(custId,mobNo,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

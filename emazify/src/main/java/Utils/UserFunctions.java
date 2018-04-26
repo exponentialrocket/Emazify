@@ -115,7 +115,7 @@ public class UserFunctions{
     }
 
 
-    public void emazifyLogin(String CustId,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyLogin(String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
 
 
         JSONObject jsonParams;
@@ -128,11 +128,11 @@ public class UserFunctions{
             jsonParams.put("customerId", CustId);
             jsonParams.put("emailId", "");
             jsonParams.put("emazyCustomerId", emaziCustId);
-            jsonParams.put("mobileNumber", "9408564247");
+            jsonParams.put("mobileNumber", mobNo);
             jsonParams.put("eventName", "login");
 
 
-            //    showErrorLog("emazify Url " + EMAZIFY_LOGIN_URL);
+            showErrorLog("emazify Login Url " + EMAZIFY_LOGIN_URL);
             showErrorLog("emazify Params " + jsonParams.toString());
 
             StringEntity entity = new StringEntity(jsonParams.toString());
@@ -151,7 +151,7 @@ public class UserFunctions{
 
 
 
-    public void emazifyLogOut(String CustId,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyLogOut(String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -163,7 +163,7 @@ public class UserFunctions{
             jsonParams.put("customerId", CustId);
             jsonParams.put("emailId", "");
             jsonParams.put("emazyCustomerId", emaziCustId);
-            jsonParams.put("mobileNumber", "9408564247");
+            jsonParams.put("mobileNumber", mobNo);
             jsonParams.put("eventName", "logout");
 
             showErrorLog("emazify logout Params " + jsonParams.toString());
