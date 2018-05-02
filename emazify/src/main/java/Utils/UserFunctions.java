@@ -90,9 +90,9 @@ public class UserFunctions{
         https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected
 
             EMAZIFY_LOGIN_KEY = "3EfcZaDxBO3WN8HiRauwv9KmQrEQSaU67yK4Bloh";
-            EMAZIFY_USER_PROPERTY_KEY = "fhuVU0192P6mCq3r4RHe86sqAOvEzwgoDwfJ7nhb";
+            EMAZIFY_USER_PROPERTY_KEY = "R6V5S8435O7UfN6Cl4vQb1pcc5y9V2YJ4SziRsQr";
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "w8KYpQLT0o3Wmc41qFMqcmFlsHLmrz4CvdfEps10";
-            EMAZIFY_EVENTS_KEY = "nUcXZCYFut8W5dGYB8yge8RJtNPgb7guFVg7r200";
+            EMAZIFY_EVENTS_KEY = "fhuVU0192P6mCq3r4RHe86sqAOvEzwgoDwfJ7nhb";
             EMAZIFY_NOTI_UPDATE_KEY= "Zc9NxSUJ6d7kkerODyzvI8twTyGTrMWz9vpVYOES";
             EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
 
