@@ -367,6 +367,7 @@ public class UserFunctions{
         map.put("customerId", CustId);
         map.put("emazyCustomerId", emaziCustId);
         map.put("eventName", eventName);
+        map.put("ez_source", "Android");
         map.put("properties",properties);
 
         Gson locationGson  = new Gson();
