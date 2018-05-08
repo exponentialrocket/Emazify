@@ -121,16 +121,14 @@ public class UserFunctions{
         JSONObject jsonParams;
         try {
 
-
-
             jsonParams = new JSONObject();
-            jsonParams.put("accountId", "onewaycab");
-            jsonParams.put("customerId", CustId);
-            jsonParams.put("emailId", "");
-            jsonParams.put("emazyCustomerId", emaziCustId);
-            jsonParams.put("mobileNumber", mobNo);
-            jsonParams.put("eventName", "login");
-
+            jsonParams.put("ez_accountId", "onewaycab");
+            jsonParams.put("ez_customerId", CustId);
+            jsonParams.put("ez_emailId", "");
+            jsonParams.put("ez_emazyCustomerId", emaziCustId);
+            jsonParams.put("ez_mobileNumber", mobNo);
+            jsonParams.put("ez_eventName", "login");
+            jsonParams.put("ez_source", "android");
 
             showErrorLog("emazify Login Url " + EMAZIFY_LOGIN_URL);
             showErrorLog("emazify Params " + jsonParams.toString());
