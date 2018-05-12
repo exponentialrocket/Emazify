@@ -3,20 +3,16 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
-   // flavorDimensions "default"
-
+    buildToolsVersion "27.0.1"
     lintOptions {
         abortOnError false
     }
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 15
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -24,21 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-  /*  productFlavors {
-
-        staging {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            buildConfigField 'boolean', 'isLive', 'false'
-        }
-
-
-        live {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            buildConfigField 'boolean', 'isLive', 'true'
-        }
-
-    }*/
 }
 
 dependencies {
@@ -47,11 +28,13 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.loopj.android:android-async-http:1.4.8'
     implementation 'org.apache.httpcomponents:httpcore:4.3.2'
+
     implementation 'com.google.code.gson:gson:2.4'
     implementation 'com.google.firebase:firebase-appindexing:10.0.1'
     implementation 'com.google.firebase:firebase-core:10.0.1'
     implementation "com.google.firebase:firebase-messaging:10.0.1"
     implementation 'com.google.firebase:firebase-core:10.0.1'
+
 }
 
 
