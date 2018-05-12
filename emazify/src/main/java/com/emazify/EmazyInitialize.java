@@ -18,7 +18,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.SyncHttpClient;
-import com.oneway.emazify.R;
+
 
 import org.apache.http.Header;
 import org.json.JSONObject;
