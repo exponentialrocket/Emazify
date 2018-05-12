@@ -15,14 +15,6 @@ android:label="@string/app_name"
 android:supportsRtl="true"
 
     >
-   <!-- <receiver
-        android:name="receivers.MyBroadcastReceiver"
-        android:exported="true">
-       &lt;!&ndash; <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
-        </intent-filter>&ndash;&gt;
-    </receiver>-->
-
     <service
         android:name="Services.AppDetectservice"
         android:enabled="true"
