@@ -80,23 +80,22 @@ public class UserFunctions{
 /*
         if(!isLive){
 */
-            EMAZIFY_LOGIN_URL = "https://qivs929o3a.execute-api.ap-south-1.amazonaws.com/user_login_api";
+          /*  EMAZIFY_LOGIN_URL = "https://qivs929o3a.execute-api.ap-south-1.amazonaws.com/user_login_api";
             EMAZIFY_USER_PROPERTY_URL = "https://immrpob4v7.execute-api.ap-south-1.amazonaws.com/user_property";
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
             EMAZIFY_EVENTS = "https://ngi797uwx1.execute-api.ap-south-1.amazonaws.com/user_custom_event";
             EMAZIFY_NOTI_UPDATE_URL = "https://nl1sezi3n1.execute-api.ap-south-1.amazonaws.com/campaign_notification_event_update";
             EMAZIFY_APP_DETECT_URL = "https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected";
 
-        https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected
 
             EMAZIFY_LOGIN_KEY = "3EfcZaDxBO3WN8HiRauwv9KmQrEQSaU67yK4Bloh";
             EMAZIFY_USER_PROPERTY_KEY = "R6V5S8435O7UfN6Cl4vQb1pcc5y9V2YJ4SziRsQr";
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "w8KYpQLT0o3Wmc41qFMqcmFlsHLmrz4CvdfEps10";
             EMAZIFY_EVENTS_KEY = "fhuVU0192P6mCq3r4RHe86sqAOvEzwgoDwfJ7nhb";
             EMAZIFY_NOTI_UPDATE_KEY= "Zc9NxSUJ6d7kkerODyzvI8twTyGTrMWz9vpVYOES";
-            EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
+            EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";*/
 
-     /*  }else{
+
             EMAZIFY_LOGIN_URL = "https://m0vd9ivjpj.execute-api.ap-south-1.amazonaws.com/user_login_api_live";
             EMAZIFY_USER_PROPERTY_URL = "https://fkhmt0jdjj.execute-api.ap-south-1.amazonaws.com/user_property_live";
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://jdypv37xbl.execute-api.ap-south-1.amazonaws.com/user_auto_system_property_live";
@@ -111,7 +110,7 @@ public class UserFunctions{
             EMAZIFY_EVENTS_KEY = "5dyLY8WlFReBpkk2mrpt12caNum8I2S18JKzkYp0";
             EMAZIFY_NOTI_UPDATE_KEY= "LJhteNWdIE8BvvYL8Geji6k6DiwAT1VSlNQqSeFj";
             EMAZIFY_APP_DETECT_KEY= "xfPLSMavRR3409W4wkS9f6YHI9gdAlFB7QfH552H";
-        }*/
+
     }
 
 
