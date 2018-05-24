@@ -65,7 +65,7 @@ public class AppDetectservice extends Service {
     public void callAppDetectApi(final Context context) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.   emazifyAppDetect(new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -18,6 +20,14 @@
             android:name="receivers.MyBroadcastReceiver"
             android:exported="true">
         </receiver>-->
+
+        <service
+            android:name="Services.FetchUserCityService"
+            android:exported="false"/>
+
+        <service
+            android:name="Services.AppDetectservice"
+            android:exported="false"/>
 
     </application>
 

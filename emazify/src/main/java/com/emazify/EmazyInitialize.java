@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.util.Map;
 
 import Services.AppDetectservice;
+import Services.FetchUserCityService;
 import Utils.ConnectionDetector;
 import Utils.Const;
 import Utils.Pref;
@@ -125,6 +126,23 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("silent")){
+
+            if (utils.isGooglePlayServicesAvailable(context)) {
+                if (mConnectionDetector.isConnectingToInternet()) {
+                    if (utils.isLocationProviderEnable(context)) {
+                        //call get user current location and get user current city name in background service
+                        Intent intentFetchUserCityService = new Intent(context, FetchUserCityService.class);
+                        context.startService(intentFetchUserCityService);
+                    }
+                    else {
+                        //OWC-1877 #vijayrajput 18-01-2016 05-30-pm
+                        //fix issue of get user location and display route list as per location
+                        Pref.setValue(context, Const.PREF_USER_LAT, "0");
+                        Pref.setValue(context, Const.PREF_USER_LONG, "0");
+                        Pref.setValue(context, Const.PREF_USER_CITY, "");
+                    }
+                }
+            }
                 context.startService(new Intent(context, AppDetectservice.class));
         }
 

@@ -1,13 +1,18 @@
 package Utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -161,4 +166,38 @@ public class utils{
 
         return version;
     }
+
+    public static boolean isGooglePlayServicesAvailable(Context context) {
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
+        if (ConnectionResult.SUCCESS == status) {
+            return true;
+        }
+        else {
+            GooglePlayServicesUtil.getErrorDialog(status, (Activity) context, 0).show();
+            return false;
+        }
+    }
+
+    public static boolean isLocationProviderEnable(final Context context) {
+
+        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        boolean isGpsEnabled = false;
+        boolean isNetworkEnabled = false;
+
+        try {
+            isGpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return !(!isGpsEnabled && !isNetworkEnabled) && isGpsEnabled;
+    }
+
 }
