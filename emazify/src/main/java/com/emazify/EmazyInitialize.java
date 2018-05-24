@@ -143,7 +143,7 @@ public class EmazyInitialize{
                     }
                 }
             }
-                context.startService(new Intent(context, AppDetectservice.class));
+
         }
 
         String message = receivedMap.get("message");
