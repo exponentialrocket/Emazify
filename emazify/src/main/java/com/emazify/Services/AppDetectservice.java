@@ -1,24 +1,15 @@
-package Services;
+package com.emazify.Services;
 
-import android.Manifest;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.IBinder;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 
-import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 
 import Utils.ConnectionDetector;
 import Utils.UserFunctions;

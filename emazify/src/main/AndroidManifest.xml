@@ -22,11 +22,11 @@
         >
 
         <service
-            android:name="Services.FetchUserCityService"
+            android:name="com.emazify.Services.FetchUserCityService"
             android:exported="false"/>
 
         <service
-            android:name="Services.AppDetectservice"
+            android:name="com.emazify.Services.AppDetectservice"
             android:exported="false"/>
 
     </application>

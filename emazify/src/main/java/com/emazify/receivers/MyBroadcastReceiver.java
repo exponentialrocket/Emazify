@@ -1,22 +1,15 @@
-package receivers;
+package com.emazify.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.emazify.EmazyInitialize;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONObject;
 
-import java.util.Map;
-
 import Utils.ConnectionDetector;
-import Utils.Const;
-import Utils.Pref;
 import Utils.UserFunctions;
 import Utils.utils;
 

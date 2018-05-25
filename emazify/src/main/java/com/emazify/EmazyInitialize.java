@@ -7,12 +7,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.AsyncHttpClient;
@@ -25,14 +22,13 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-import Services.AppDetectservice;
-import Services.FetchUserCityService;
+import com.emazify.Services.FetchUserCityService;
 import Utils.ConnectionDetector;
 import Utils.Const;
 import Utils.Pref;
 import Utils.UserFunctions;
 import Utils.utils;
-import receivers.MyBroadcastReceiver;
+import com.emazify.receivers.MyBroadcastReceiver;
 
 /**
  * Created by owc-android on 15/3/18.

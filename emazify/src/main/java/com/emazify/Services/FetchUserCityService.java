@@ -1,4 +1,4 @@
-package Services;
+package com.emazify.Services;
 
 import android.app.IntentService;
 import android.content.Intent;
