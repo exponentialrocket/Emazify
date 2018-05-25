@@ -19,13 +19,6 @@
         android:largeHeap="true"
         >
 
-        <service
-            android:name="Services.FetchUserCityService"
-            android:exported="false"/>
-
-        <service
-            android:name="Services.AppDetectservice"
-            android:exported="false"/>
 
     </application>
 
