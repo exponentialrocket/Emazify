@@ -129,6 +129,7 @@ public class EmazyInitialize{
                         //call get user current location and get user current city name in background service
                         Intent intentFetchUserCityService = new Intent(context, FetchUserCityService.class);
                         context.startService(intentFetchUserCityService);
+                        return;
                     }
                     else {
                         //OWC-1877 #vijayrajput 18-01-2016 05-30-pm

@@ -92,6 +92,7 @@ public class FetchUserCityService extends IntentService implements LocationTrack
                 geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                 addresses = geocoder.getFromLocation(Double.parseDouble(userLat), Double.parseDouble(userLong), 1);
                 city = addresses.get(0).getLocality();
+                Pref.setValue(getApplicationContext(), Const.PREF_USER_CITY, "" + city);
             }
             catch (Exception e) {
                 e.printStackTrace();
