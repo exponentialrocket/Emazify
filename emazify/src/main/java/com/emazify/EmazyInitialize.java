@@ -48,10 +48,10 @@ public class EmazyInitialize{
         return ourInstance;
     }
 
-    public void callEmazifyLoginApi(final Context context, String custId, String mobNo) {
+    public void callEmazifyLoginApi(final Context context, String accountId,String custId, String mobNo) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyLogin(custId,mobNo,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyLogin(accountId,custId,mobNo,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -112,7 +112,7 @@ public class EmazyInitialize{
 
 
 
-    public void sendNotification(final Context context, RemoteMessage msg) {
+    public void sendNotification(final Context context,String accountId, RemoteMessage msg) {
 /*
 
         Intent intent = new Intent(this, .class);
@@ -128,6 +128,7 @@ public class EmazyInitialize{
                     if (utils.isLocationProviderEnable(context)) {
                         //call get user current location and get user current city name in background service
                         Intent intentFetchUserCityService = new Intent(context, FetchUserCityService.class);
+                        intentFetchUserCityService.putExtra("accountId",accountId);
                         context.startService(intentFetchUserCityService);
                         return;
                     }
@@ -182,12 +183,12 @@ public class EmazyInitialize{
     }
 
 
-    public void callAutoSystemUserPropertyApi(final Context context, String custId, String mobNo, String email,
+    public void callAutoSystemUserPropertyApi(final Context context,String accountId, String custId, String mobNo, String email,
                                               String fcmToken, Boolean ezPushNotiEnabled, String latLng) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         Pref.setValue(context, Const.GCM_TOKEN, fcmToken);
-        mUserFunctions.emazifyAutoSystemUserProperty(custId,mobNo,email,fcmToken,ezPushNotiEnabled,latLng,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAutoSystemUserProperty(accountId,custId,mobNo,email,fcmToken,ezPushNotiEnabled,latLng,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -240,10 +241,10 @@ public class EmazyInitialize{
     }
 
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,String customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,String customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -286,10 +287,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,float customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,float customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -332,10 +333,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,int customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,int customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -378,10 +379,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,double customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,double customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -424,10 +425,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context, String custId,String customAttributeName,long customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,long customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyUserProperty(custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -469,10 +470,10 @@ public class EmazyInitialize{
 
         });
     }
-    public void callEmazifyLogOutApi(final Context context, String custId,String mobNo) {
+    public void callEmazifyLogOutApi(final Context context,String accountId, String custId,String mobNo) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyLogOut(custId,mobNo,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyLogOut(accountId,custId,mobNo,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -518,10 +519,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void emazifyEvents(final Context context, String custId,String eventName,Map<String,Object> properties) {
+    public void emazifyEvents(final Context context, String accountId,String custId,String eventName,Map<String,Object> properties) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyEvents(custId,eventName,properties,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyEvents(accountId,custId,eventName,properties,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

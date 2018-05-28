@@ -114,14 +114,14 @@ public class UserFunctions{
     }
 
 
-    public void emazifyLogin(String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyLogin(String accountId,String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
 
 
         JSONObject jsonParams;
         try {
 
             jsonParams = new JSONObject();
-            jsonParams.put("ez_accountId", "onewaycab");
+            jsonParams.put("ez_accountId", accountId);
             jsonParams.put("ez_customerId", CustId);
             jsonParams.put("ez_emailId", "");
             jsonParams.put("ez_emazyCustomerId", emaziCustId);
@@ -148,7 +148,7 @@ public class UserFunctions{
 
 
 
-    public void emazifyLogOut(String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyLogOut(String accountId,String CustId,String mobNo,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -156,7 +156,7 @@ public class UserFunctions{
 
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emailId", "");
             jsonParams.put("emazyCustomerId", emaziCustId);
@@ -176,13 +176,13 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,String customAttributeName,String customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,String customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
@@ -202,13 +202,13 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,String customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
@@ -228,13 +228,13 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,String customAttributeName,int customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,int customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
@@ -255,13 +255,13 @@ public class UserFunctions{
     }
 
 
-    public void emazifyUserProperty(String CustId,String customAttributeName,double customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,double customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
@@ -281,13 +281,13 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,long customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("customAttributeName", customAttributeName);
@@ -307,13 +307,13 @@ public class UserFunctions{
 
     }
 
-    public void  emazifyAppDetect(AsyncHttpResponseHandler responseHandler) {
+    public void  emazifyAppDetect(String accountId,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
             jsonParams = new JSONObject();
 
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("appVersion", utils.getAppVersion(mContext));
             jsonParams.put("pushNotificationEnabled", true);
             jsonParams.put("imei", utils.getDeviceIMEI(mContext));
@@ -358,10 +358,10 @@ public class UserFunctions{
 
     }
 
-    public void emazifyEvents(String CustId, String eventName, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
+    public void emazifyEvents(String accountId,String CustId, String eventName, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
 
         Map<String,Object> map=new HashMap<String,Object>();
-        map.put("accountId", "onewaycab");
+        map.put("accountId", accountId);
         map.put("customerId", CustId);
         map.put("emazyCustomerId", emaziCustId);
         map.put("eventName", eventName);
@@ -385,7 +385,7 @@ public class UserFunctions{
         myAsyncHttpClient.post(mContext, EMAZIFY_EVENTS , entity, CONTENT_TYPE, responseHandler);
     }
 
-    public void emazifyAutoSystemUserProperty(String CustId,String mobNo,String email,
+    public void emazifyAutoSystemUserProperty(String accountId,String CustId,String mobNo,String email,
                                               String fcmToken,Boolean ezPushNotiEnabled,String latlng,
                                               AsyncHttpResponseHandler responseHandler) {
 
@@ -394,7 +394,7 @@ public class UserFunctions{
 
             jsonParams = new JSONObject();
             //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
-            jsonParams.put("accountId", "onewaycab");
+            jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("mobileNumber", mobNo);
             jsonParams.put("ezUserPlatform", "Android");

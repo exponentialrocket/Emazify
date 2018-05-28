@@ -20,6 +20,7 @@ public class AppDetectservice extends Service {
     UserFunctions mUserFunctions;
     private static final String TAG = AppDetectservice.class.getSimpleName();
     private ConnectionDetector mConnectionDetector;
+    private String accountId;
 
     @Override
     public void onCreate() {
@@ -40,7 +41,7 @@ public class AppDetectservice extends Service {
 
         try {
                     if (mConnectionDetector.isConnectingToInternet()) {
-                        callAppDetectApi(getBaseContext());
+                        callAppDetectApi(getBaseContext(),accountId);
 
                     } else {
                     stopSelf();
@@ -53,10 +54,10 @@ public class AppDetectservice extends Service {
         return START_STICKY;
     }
 
-    public void callAppDetectApi(final Context context) {
+    public void callAppDetectApi(final Context context,String accountId) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAppDetect(new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAppDetect(accountId,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

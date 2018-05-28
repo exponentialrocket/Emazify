@@ -18,6 +18,7 @@ import Utils.utils;
 public class FetchUserCityService extends IntentService implements LocationTracker.UpdateUI {
     private static final String TAG = FetchUserCityService.class.getName();
     private LocationTracker mLocationTracker;
+    private String accountId;
 
     public FetchUserCityService() {
         super("FetchUserCityService");
@@ -28,6 +29,7 @@ public class FetchUserCityService extends IntentService implements LocationTrack
     public void onCreate() {
         super.onCreate();
         mLocationTracker = LocationTracker.newInstance(FetchUserCityService.this, this, 10000, 10000);
+
     }
 
     @Override
@@ -35,6 +37,8 @@ public class FetchUserCityService extends IntentService implements LocationTrack
         if (mLocationTracker != null) {
             mLocationTracker.connect();
         }
+        accountId=(String) intent.getExtras().get("accountId");
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -70,6 +74,11 @@ public class FetchUserCityService extends IntentService implements LocationTrack
         new FetchUserCity().execute();
         mLocationTracker.stopLocationUpdates();
         startService(new Intent(getApplicationContext(), AppDetectservice.class));
+
+        Intent appDetectService = new Intent(getApplicationContext(), AppDetectservice.class);
+        appDetectService.putExtra("accountId",accountId);
+        startService(appDetectService);
+
     }
 
     private void showErrorLog(String messageString) {
