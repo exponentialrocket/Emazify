@@ -73,7 +73,6 @@ public class FetchUserCityService extends IntentService implements LocationTrack
         Pref.setValue(getApplicationContext(), Const.PREF_USER_LONG, "" + location.getLongitude());
         new FetchUserCity().execute();
         mLocationTracker.stopLocationUpdates();
-        startService(new Intent(getApplicationContext(), AppDetectservice.class));
 
         Intent appDetectService = new Intent(getApplicationContext(), AppDetectservice.class);
         appDetectService.putExtra("accountId",accountId);
