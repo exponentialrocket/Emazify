@@ -78,7 +78,7 @@ public class FetchUserCityService extends IntentService implements LocationTrack
         Intent appDetectService = new Intent(getApplicationContext(), AppDetectservice.class);
         appDetectService.putExtra("accountId",accountId);
         showErrorLog("moving AppDetectService accountId"+accountId);
-        startService(appDetectService);
+        getApplicationContext().startService(appDetectService);
 
     }
 

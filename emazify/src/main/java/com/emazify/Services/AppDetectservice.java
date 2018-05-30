@@ -1,5 +1,6 @@
 package com.emazify.Services;
 
+import android.app.IntentService;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +16,16 @@ import Utils.ConnectionDetector;
 import Utils.UserFunctions;
 import Utils.utils;
 
-public class AppDetectservice extends Service {
+public class AppDetectservice extends IntentService {
 
     UserFunctions mUserFunctions;
     private static final String TAG = AppDetectservice.class.getSimpleName();
     private ConnectionDetector mConnectionDetector;
     private String accountId;
+
+    public AppDetectservice() {
+        super("AppDetectservice");
+    }
 
     @Override
     public void onCreate() {
@@ -33,6 +38,11 @@ public class AppDetectservice extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+
     }
 
     @Override
