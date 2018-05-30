@@ -50,7 +50,7 @@ public class AppDetectservice extends IntentService {
         super.onStartCommand(intent, flags, startId);
 
         accountId=(String) intent.getExtras().get("accountId");
-        showErrorLog("inside FetchUserCityService accountId"+accountId);
+        showErrorLog("inside AppDetectservice accountId"+accountId);
 
         try {
                     if (mConnectionDetector.isConnectingToInternet()) {
