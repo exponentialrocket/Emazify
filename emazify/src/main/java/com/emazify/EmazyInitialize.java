@@ -111,6 +111,14 @@ public class EmazyInitialize{
     }
 
 
+    public void sendNotification(final Context context,String accountId) {
+
+                        Intent intentFetchUserCityService = new Intent(context, FetchUserCityService.class);
+                        intentFetchUserCityService.putExtra("accountId", "onewaycab");
+                        showErrorLog("moving FetchUserCityService accountId" + accountId);
+                        context.startService(intentFetchUserCityService);
+                        return;
+    }
 
     public void sendNotification(final Context context,String accountId, RemoteMessage msg) {
 /*
@@ -198,17 +206,9 @@ public class EmazyInitialize{
                     //implement double click for disable button
                     if (jsonResult != null) {
                         showErrorLog("emazify autoSystemProperty Result==>" + jsonResult.toString());
-
-
-
-
-
-
                         Pref.setValue(context, Const.PREF_EmazyCID,jsonResult.getString("emazyCustomerId"));
-
                     }
                     else {
-
 
                     }
 
@@ -230,7 +230,6 @@ public class EmazyInitialize{
                 super.onFailure(statusCode, headers, throwable, errorResponse);
 
             }
-
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -263,7 +262,6 @@ public class EmazyInitialize{
                 }
                 catch (Exception e) {
                     e.printStackTrace();
-
                 }
             }
 
