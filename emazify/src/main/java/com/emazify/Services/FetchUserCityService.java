@@ -38,7 +38,7 @@ public class FetchUserCityService extends IntentService implements LocationTrack
             mLocationTracker.connect();
         }
         accountId=(String) intent.getExtras().get("accountId");
-
+        showErrorLog("inside FetchUserCityService accountId"+accountId);
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -77,6 +77,7 @@ public class FetchUserCityService extends IntentService implements LocationTrack
 
         Intent appDetectService = new Intent(getApplicationContext(), AppDetectservice.class);
         appDetectService.putExtra("accountId",accountId);
+        showErrorLog("moving AppDetectService accountId"+accountId);
         startService(appDetectService);
 
     }
