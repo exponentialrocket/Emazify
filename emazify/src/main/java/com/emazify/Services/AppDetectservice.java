@@ -22,6 +22,7 @@ public class AppDetectservice extends IntentService {
     private static final String TAG = AppDetectservice.class.getSimpleName();
     private ConnectionDetector mConnectionDetector;
     private String accountId;
+    private String userCity;
 
     public AppDetectservice() {
         super("AppDetectservice");
@@ -50,11 +51,13 @@ public class AppDetectservice extends IntentService {
         super.onStartCommand(intent, flags, startId);
 
         accountId=(String) intent.getExtras().get("accountId");
+        userCity = (String) intent.getExtras().get("userCity");
+
         showErrorLog("inside AppDetectservice accountId"+accountId);
 
         try {
                     if (mConnectionDetector.isConnectingToInternet()) {
-                        callAppDetectApi(getBaseContext(),accountId);
+                        callAppDetectApi(getBaseContext(),accountId,userCity);
 
                     } else {
                     stopSelf();
@@ -67,10 +70,10 @@ public class AppDetectservice extends IntentService {
         return START_STICKY;
     }
 
-    public void callAppDetectApi(final Context context,String accountId) {
+    public void callAppDetectApi(final Context context,String accountId,String userCity) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyAppDetect(accountId,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyAppDetect(accountId,userCity,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-     //   EmazyInitialize.getInstance().sendNotification(MainActivity.this,"onewaycab");
+        //EmazyInitialize.getInstance().sendNotification(MainActivity.this,"onewaycab");
         }
         
 }

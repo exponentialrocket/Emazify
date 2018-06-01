@@ -307,7 +307,7 @@ public class UserFunctions{
 
     }
 
-    public void  emazifyAppDetect(String accountId,AsyncHttpResponseHandler responseHandler) {
+    public void  emazifyAppDetect(String accountId,String userCity,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
@@ -318,7 +318,7 @@ public class UserFunctions{
             jsonParams.put("pushNotificationEnabled", true);
             jsonParams.put("imei", utils.getDeviceIMEI(mContext));
             jsonParams.put("emazyCustomerId", emaziCustId);
-            jsonParams.put("ezUserAutoLocationCity", Pref.getValue(mContext, Const.PREF_USER_CITY,""));
+            jsonParams.put("ezUserAutoLocationCity", userCity);
 
             showErrorLog("emazify emazifyAppDetect Url " + EMAZIFY_APP_DETECT_URL);
             showErrorLog("emazify emazifyAppDetect Params " + jsonParams.toString());

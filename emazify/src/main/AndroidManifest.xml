@@ -22,10 +22,6 @@
         >
 
         <service
-            android:name="com.emazify.Services.FetchUserCityService"
-            android:exported="false"/>
-
-        <service
             android:name="com.emazify.Services.AppDetectservice"
             android:exported="false"/>
 
