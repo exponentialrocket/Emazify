@@ -397,7 +397,7 @@ public class UserFunctions{
             jsonParams.put("accountId", accountId);
             jsonParams.put("customerId", CustId);
             jsonParams.put("mobileNumber", mobNo);
-            jsonParams.put("ezUserPlatform", "Android");
+            jsonParams.put("ezUserPlatform", "android");
             jsonParams.put("emazyCustomerId", emaziCustId);
             jsonParams.put("emailId", email);
             jsonParams.put("imei", utils.getDeviceIMEI(mContext));
@@ -411,7 +411,7 @@ public class UserFunctions{
             jsonParams.put("androidVersion", utils.getOsVersion());
             jsonParams.put("ezSdkVersion", SDK_Version);
             jsonParams.put("ezUserAutoLocation", latlng);
-            jsonParams.put("source", "Android");
+            jsonParams.put("source", "android");
 
             showErrorLog("emazifyAutoSystemUserProperty Url " + EMAZIFY_USER_AUTO_PROPERTY_URL);
             showErrorLog("emazifyAutoSystemUserProperty Params " + jsonParams.toString());
