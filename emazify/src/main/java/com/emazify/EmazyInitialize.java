@@ -111,45 +111,27 @@ public class EmazyInitialize{
     }
 
     public void sendNotification(final Context context,String userCity,String accountId, RemoteMessage msg) {
-/*
 
-        Intent intent = new Intent(this, .class);
+        if (!mConnectionDetector.isConnectingToInternet()) {
 
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-*/
-        Map<String, String> receivedMap = msg.getData();
 
-        if(receivedMap.get("key").equals("silent")){
+            Map<String, String> receivedMap = msg.getData();
 
-            if (utils.isGooglePlayServicesAvailable(context)) {
-                    if (utils.isLocationProviderEnable(context)) {
-                        //call get user current location and get user current city name in background service
-                        Intent appDetectService = new Intent(context, AppDetectservice.class);
-                        appDetectService.putExtra("accountId",accountId);
-                        appDetectService.putExtra("userCity",userCity);
-                        showErrorLog("moving AppDetectService accountId"+accountId);
-                        context.startService(appDetectService);
-                        return;
-                    }
-                    else {
-                        //OWC-1877 #vijayrajput 18-01-2016 05-30-pm
-                        //fix issue of get user location and display route list as per location
-                        Pref.setValue(context, Const.PREF_USER_LAT, "0");
-                        Pref.setValue(context, Const.PREF_USER_LONG, "0");
-                        Pref.setValue(context, Const.PREF_USER_CITY, "");
-                    }
+            if (receivedMap.get("key").equals("silent")) {
+
+                    //call get user current location and get user current city name in background service
+                    Intent appDetectService = new Intent(context, AppDetectservice.class);
+                    appDetectService.putExtra("accountId", accountId);
+                    appDetectService.putExtra("userCity", userCity);
+                    showErrorLog("moving AppDetectService accountId" + accountId);
+                    context.startService(appDetectService);
+                    return;
+
             }
-            return;
-
         }
 
-        String message = receivedMap.get("message");
-
-
-        //OWC-960 #vijayrajput 03-12-2015 02-00-pm
-        //fix issue on multiple notification click and ride detail not load properly
+        /*String message = receivedMap.get("message");
         int requestID = (int) System.currentTimeMillis();
-        //  PendingIntent pendingIntent = PendingIntent.getActivity(context, requestID /* Request code */, new Intent() , PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
 
         Intent intent = new Intent(context, MyBroadcastReceiver.class);
         Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
@@ -175,9 +157,7 @@ public class EmazyInitialize{
         notificationBuilder.setDeleteIntent(pendingIntent);
         notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(requestID/* ID of notification */, notificationBuilder.build());
-
-
+        notificationManager.notify(requestID*//* ID of notification *//*, notificationBuilder.build());*/
 
     }
 
