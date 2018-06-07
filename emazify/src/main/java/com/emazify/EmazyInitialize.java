@@ -112,12 +112,13 @@ public class EmazyInitialize{
 
     public void sendNotification(final Context context,String userCity,String accountId, RemoteMessage msg) {
 
-        if (!mConnectionDetector.isConnectingToInternet()) {
+        try{
+            if (!mConnectionDetector.isConnectingToInternet()) {
 
 
-            Map<String, String> receivedMap = msg.getData();
+                Map<String, String> receivedMap = msg.getData();
 
-            if (receivedMap.get("key").equals("silent")) {
+                if (receivedMap.get("key").equals("silent")) {
 
                     //call get user current location and get user current city name in background service
                     Intent appDetectService = new Intent(context, AppDetectservice.class);
@@ -127,8 +128,13 @@ public class EmazyInitialize{
                     context.startService(appDetectService);
                     return;
 
+                }
             }
+        }catch (Exception e){
+
         }
+
+
 
         /*String message = receivedMap.get("message");
         int requestID = (int) System.currentTimeMillis();
