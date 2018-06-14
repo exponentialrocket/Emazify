@@ -6,7 +6,7 @@ import android.annotation.SuppressLint;
 @SuppressLint("SdCardPath")
 public class Const {
 
-    public static final String SDK_Version = "2.64";
+    public static final String SDK_Version = "2.65";
 
     public static String CID;
     public static String PREF_FILE = "Emazify_Pref_File";
