@@ -113,7 +113,7 @@ public class EmazyInitialize{
     public void sendNotification(final Context context,String userCity,String accountId, RemoteMessage msg) {
 
         try{
-            if (!mConnectionDetector.isConnectingToInternet()) {
+            if (mConnectionDetector.isConnectingToInternet()) {
 
 
                 Map<String, String> receivedMap = msg.getData();
