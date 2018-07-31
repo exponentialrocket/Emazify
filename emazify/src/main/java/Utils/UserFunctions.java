@@ -80,7 +80,7 @@ public class UserFunctions{
 /*
         if(!isLive){
 */
-            EMAZIFY_LOGIN_URL = "https://stagingapi.emazify.in/v1/androidLogin";
+            EMAZIFY_LOGIN_URL = "https://stagingapi.emazify.in/V1/androidLogin";
             EMAZIFY_USER_PROPERTY_URL = "https://immrpob4v7.execute-api.ap-south-1.amazonaws.com/user_property";
             EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
             EMAZIFY_EVENTS = "https://ngi797uwx1.execute-api.ap-south-1.amazonaws.com/user_custom_event";
