@@ -82,7 +82,9 @@ public class UserFunctions{
 */
             EMAZIFY_LOGIN_URL = "https://stagingapi.emazify.in/V1/androidLogin";
             EMAZIFY_USER_PROPERTY_URL = "https://immrpob4v7.execute-api.ap-south-1.amazonaws.com/user_property";
-            EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
+        EMAZIFY_USER_AUTO_PROPERTY_URL = "https://stagingapi.emazify.in/V1/userAutoSystemProperties";
+
+           // EMAZIFY_USER_AUTO_PROPERTY_URL = "https://py3r76iv4j.execute-api.ap-south-1.amazonaws.com/user_auto_system_property";
             EMAZIFY_EVENTS = "https://ngi797uwx1.execute-api.ap-south-1.amazonaws.com/user_custom_event";
             EMAZIFY_NOTI_UPDATE_URL = "https://nl1sezi3n1.execute-api.ap-south-1.amazonaws.com/campaign_notification_event_update";
             EMAZIFY_APP_DETECT_URL = "https://dsr8v0potg.execute-api.ap-south-1.amazonaws.com/update_app_detected";
