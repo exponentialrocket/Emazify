@@ -420,7 +420,7 @@ public class UserFunctions{
             showErrorLog("emazifyAutoSystemUserProperty Key " + EMAZIFY_USER_AUTO_PROPERTY_KEY);
             StringEntity entity = new StringEntity(jsonParams.toString());
             entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
-            myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_AUTO_PROPERTY_KEY);
+         //   myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_AUTO_PROPERTY_KEY);
 
             myAsyncHttpClient.post(mContext, EMAZIFY_USER_AUTO_PROPERTY_URL, entity, CONTENT_TYPE, responseHandler);
         } catch (JSONException | UnsupportedEncodingException e) {
