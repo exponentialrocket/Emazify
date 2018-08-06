@@ -204,6 +204,32 @@ public class UserFunctions{
 
     }
 
+    public void emazifyUserProperty(String accountId,String CustId,Boolean customAttributeName,Boolean customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+
+        JSONObject jsonParams;
+        try {
+            jsonParams = new JSONObject();
+            //  jsonParams.put("x-api-key", "EYRXczFacW41SHLP9StgH5EYCFDb9DCa6wvIoZe5");
+            jsonParams.put("accountId", accountId);
+            jsonParams.put("customerId", CustId);
+            jsonParams.put("emazyCustomerId", emaziCustId);
+            jsonParams.put("customAttributeName", customAttributeName);
+            jsonParams.put("customAttributeValue", customAttributeValue);
+
+            showErrorLog("emazify user property Url " + EMAZIFY_USER_PROPERTY_URL);
+            showErrorLog("emazify user property Params " + jsonParams.toString());
+
+            StringEntity entity = new StringEntity(jsonParams.toString());
+            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, CONTENT_TYPE));
+            myAsyncHttpClient.addHeader("x-api-key", EMAZIFY_USER_PROPERTY_KEY);
+            myAsyncHttpClient.post(mContext, EMAZIFY_USER_PROPERTY_URL , entity, CONTENT_TYPE, responseHandler);
+        }
+        catch (JSONException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,float customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;

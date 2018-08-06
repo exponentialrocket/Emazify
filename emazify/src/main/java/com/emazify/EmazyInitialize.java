@@ -218,6 +218,51 @@ public class EmazyInitialize{
         });
     }
 
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,Boolean customAttributeName,Boolean customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify UserProperty Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
 
     public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,String customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
