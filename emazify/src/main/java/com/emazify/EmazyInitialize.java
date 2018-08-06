@@ -218,7 +218,7 @@ public class EmazyInitialize{
         });
     }
 
-    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,Boolean customAttributeName,Boolean customAttributeValue) {
+    public void callEmazifyUserPropertyApi(final Context context,String accountId, String custId,String customAttributeName,Boolean customAttributeValue) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         mUserFunctions.emazifyUserProperty(accountId,custId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {

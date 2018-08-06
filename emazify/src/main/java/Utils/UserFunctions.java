@@ -204,7 +204,7 @@ public class UserFunctions{
 
     }
 
-    public void emazifyUserProperty(String accountId,String CustId,Boolean customAttributeName,Boolean customAttributeValue,AsyncHttpResponseHandler responseHandler) {
+    public void emazifyUserProperty(String accountId,String CustId,String customAttributeName,Boolean customAttributeValue,AsyncHttpResponseHandler responseHandler) {
 
         JSONObject jsonParams;
         try {
