@@ -129,6 +129,35 @@ public class EmazyInitialize{
                     return;
 
                 }
+
+                if (receivedMap.get("key").equals("campaignNotification")) {
+
+                    //call get user current location and get user current city name in background service
+                    String message = receivedMap.get("message");
+                    int requestID = (int) System.currentTimeMillis();
+
+                    Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
+
+                    PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
+
+                    Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
+                    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle(context.getResources().getString(R.string.app_name))
+                            .setContentText(message)
+                            .setAutoCancel(false)
+                            .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                            .setStyle(bigTextStyle)
+                            .setSound(defaultSoundUri)
+                            .setContentIntent(pendingIntent1);
+
+                    notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
+                    NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(requestID , notificationBuilder.build());
+                    return;
+
+                }
             }
         }catch (Exception e){
 
@@ -136,34 +165,7 @@ public class EmazyInitialize{
 
 
 
-        /*String message = receivedMap.get("message");
-        int requestID = (int) System.currentTimeMillis();
 
-        Intent intent = new Intent(context, MyBroadcastReceiver.class);
-        Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
-        intent.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
-        intent.putExtra("notiClear","clear");
-        intent1.putExtra("campaignDataUniqueId",receivedMap.get("campaignDataUniqueId"));
-        intent1.putExtra("notiClick","click");
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestID, intent, 0);
-        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
-
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(context.getResources().getString(R.string.app_name))
-                .setContentText(message)
-                .setAutoCancel(false)
-                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
-                .setStyle(bigTextStyle)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent1);
-
-        notificationBuilder.setDeleteIntent(pendingIntent);
-        notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(requestID*//* ID of notification *//*, notificationBuilder.build());*/
 
     }
 
