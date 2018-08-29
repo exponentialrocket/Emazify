@@ -146,10 +146,10 @@ public class EmazyInitialize{
         });
     }
 
-    public void emazifyDriverEvents(final Context context, String accountId,String emazyUCLId,String eventName,Map<String,Object> properties) {
+    public void emazifyDriverEvents(final Context context, String accountId,String emazyUCLId,String driverMob,String eventName,String ezSource,Map<String,Object> properties) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
-        mUserFunctions.emazifyDriverEvents(accountId,emazyUCLId,eventName,properties,new JsonHttpResponseHandler() {
+        mUserFunctions.emazifyDriverEvents(accountId,emazyUCLId,driverMob,eventName,ezSource,properties,new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);

@@ -154,14 +154,14 @@ public class UserFunctions{
 
     }
 
-    public void emazifyDriverEvents(String accountId,String emazyUCLId,String dcoMob,String eventName, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
+    public void emazifyDriverEvents(String accountId,String emazyUCLId,String dcoMob,String eventName,String ezSource, Map<String,Object> properties, AsyncHttpResponseHandler responseHandler) {
 
         Map<String,Object> map=new HashMap<String,Object>();
         map.put("accountId", accountId);
         map.put("ez_dcoId", emazyUCLId);
         map.put("ez_dcomobile", dcoMob);
         map.put("eventName", eventName);
-        map.put("ez_source", "android");
+        map.put("ez_source", ezSource);
         map.put("properties",properties);
 
         Gson locationGson  = new Gson();
