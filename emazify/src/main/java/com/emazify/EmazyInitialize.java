@@ -98,6 +98,379 @@ public class EmazyInitialize{
         });
     }
 
+    public void callDriverLoginApi(final Context context, String accountId,String emazyUCLId, String mobNo,String fullName) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverLogin(accountId,emazyUCLId,mobNo,fullName,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+                        showErrorLog("emazify driver login Result==>" + jsonResult.toString());
+
+                    }
+                    else {
+
+
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void emazifyDriverEvents(final Context context, String accountId,String emazyUCLId,String eventName,Map<String,Object> properties) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverEvents(accountId,emazyUCLId,eventName,properties,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+                        showErrorLog("emazify Driver Events  Result==>" + jsonResult.toString());
+
+
+                    }
+                    else {
+
+
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,boolean customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,float customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,int customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,String  customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,long customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
+    public void callEmazifyDriverPropertyApi(final Context context,String accountId, String emazyUCLId,String customAttributeName,double customAttributeValue) {
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
+        mUserFunctions.emazifyDriverProperties(accountId,emazyUCLId,customAttributeName,customAttributeValue,new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
+                super.onSuccess(statusCode, headers, jsonResult);
+                try {
+                    //OWC-2517 #prashantjajal 18-04-2016 011-10-am
+                    //implement double click for disable button
+                    if (jsonResult != null) {
+
+                        showErrorLog("emazify Driver Property Result==>"+jsonResult.toString());
+
+                    }
+                    else {
+                    }
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+
+            }
+
+        });
+    }
+
     public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg) {
 
         Map<String, String> receivedMap = msg.getData();
@@ -495,6 +868,7 @@ public class EmazyInitialize{
 
         });
     }
+
     public void callEmazifyLogOutApi(final Context context,String accountId, String custId,String mobNo) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
