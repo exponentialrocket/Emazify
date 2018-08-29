@@ -84,7 +84,7 @@ public class UserFunctions{
         }
 
             EMAZIFY_DRIVER_LOGIN_URL = "https://stagingapi.emazify.in/V1/driverAndroidLogin";
-            EMAZIFY_DRIVER_EVENTS = "https://stagingapi.emazify.in/V1/driverEvent";
+            EMAZIFY_DRIVER_EVENTS = "https://stagingapi.emazify.in/V1/driverSystemEvent";
             EMAZIFY_DRIVER_PROPERTY_URL = "https://stagingapi.emazify.in/V1/driverProperties";
 
             EMAZIFY_LOGIN_URL = "https://stagingapi.emazify.in/V1/androidLogin";
@@ -105,7 +105,7 @@ public class UserFunctions{
             EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
 
            /* EMAZIFY_DRIVER_LOGIN_URL = "https://api.emazify.in/V1/driverAndroidLogin";
-            EMAZIFY_DRIVER_EVENTS = "https://api.emazify.in/V1/driverEvent";
+            EMAZIFY_DRIVER_EVENTS = "https://api.emazify.in/V1/driverSystemEvent";
             EMAZIFY_DRIVER_PROPERTY_URL = "https://api.emazify.in/V1/driverProperties";
 
             EMAZIFY_LOGIN_URL = "https://api.emazify.in/V1/androidLogin";
