@@ -7,7 +7,7 @@ import com.google.android.gms.analytics.Tracker;
 
 import Utils.Const;
 
-public class MyApplication extends Application{
+public class MyApplication1 extends Application{
     //object variables
     private static volatile GoogleAnalytics mGoogleAnalytics;
     private static volatile Tracker mTracker;
