@@ -12,6 +12,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.emazify.Services.AppDetectservice;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -41,6 +43,7 @@ public class EmazyInitialize{
     private static final String TAG = EmazyInitialize.class.getSimpleName();
     private final int SPLASH_DISPLAY_LENGTH = 5000;
     private final AsyncHttpClient aClient = new SyncHttpClient();
+    private Tracker mTracker;
 
     private static EmazyInitialize ourInstance = new EmazyInitialize();
 
@@ -483,8 +486,8 @@ public class EmazyInitialize{
         return false;
     }
 
-    public void sendNotification(final Context context,String userCity,String accountId, RemoteMessage msg) {
-
+    public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
+        mTracker = MyApplication.tracker();
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
 
@@ -493,10 +496,17 @@ public class EmazyInitialize{
 
                 if (receivedMap.get("key").equals("silent")) {
 
+                    mTracker.set("&uid", customerId);
+                    mTracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("Emazify")
+                            .setAction("Inside Emazify SDK")
+                            .setLabel("silent").build());
+
                     //call get user current location and get user current city name in background service
                     Intent appDetectService = new Intent(context, AppDetectservice.class);
                     appDetectService.putExtra("accountId", accountId);
                     appDetectService.putExtra("userCity", userCity);
+                    appDetectService.putExtra("customerId", customerId);
                     showErrorLog("moving AppDetectService accountId" + accountId);
                     context.startService(appDetectService);
                     return;

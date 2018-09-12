@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.emazify.MyApplication;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -23,6 +26,8 @@ public class AppDetectservice extends IntentService {
     private ConnectionDetector mConnectionDetector;
     private String accountId;
     private String userCity;
+    private String customerId;
+    private Tracker mTracker;
 
     public AppDetectservice() {
         super("AppDetectservice");
@@ -33,6 +38,7 @@ public class AppDetectservice extends IntentService {
         super.onCreate();
         mConnectionDetector = new ConnectionDetector(getBaseContext());
         mUserFunctions = new UserFunctions(getBaseContext());
+        mTracker = MyApplication.tracker();
     }
 
     @Nullable
@@ -52,12 +58,14 @@ public class AppDetectservice extends IntentService {
 
         accountId=(String) intent.getExtras().get("accountId");
         userCity = (String) intent.getExtras().get("userCity");
+        customerId = (String) intent.getExtras().get("customerId");
 
         showErrorLog("inside AppDetectservice accountId"+accountId);
 
         try {
                     if (mConnectionDetector.isConnectingToInternet()) {
-                        callAppDetectApi(getBaseContext(),accountId,userCity);
+
+                        callAppDetectApi(getBaseContext(),accountId,customerId,userCity);
 
                     } else {
                     stopSelf();
@@ -70,10 +78,19 @@ public class AppDetectservice extends IntentService {
         return START_STICKY;
     }
 
-    public void callAppDetectApi(final Context context,String accountId,String userCity) {
+    public void callAppDetectApi(final Context context, String accountId, final String customerId, String userCity) {
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
+
+        mTracker.set("&uid", customerId);
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Emazify")
+                .setAction("AppDetect call start")
+                .setLabel("silent").build());
+
         mUserFunctions.emazifyAppDetect(accountId,userCity,new JsonHttpResponseHandler() {
+
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResult) {
                 super.onSuccess(statusCode, headers, jsonResult);
@@ -81,11 +98,20 @@ public class AppDetectservice extends IntentService {
                     //OWC-2517 #prashantjajal 18-04-2016 011-10-am
                     //implement double click for disable button
                     if (jsonResult != null) {
+                        mTracker.set("&uid", customerId);
+                        mTracker.send(new HitBuilders.EventBuilder()
+                                .setCategory("Emazify")
+                                .setAction("AppDetect call success")
+                                .setLabel("SUCCESS").build());
                         showErrorLog("emazify callAppDetectApi Result==>" + jsonResult.toString());
                     }
                     else {
 
-
+                        mTracker.set("&uid", customerId);
+                        mTracker.send(new HitBuilders.EventBuilder()
+                                .setCategory("Emazify")
+                                .setAction("AppDetect call fail")
+                                .setLabel("FAIL").build());
                     }
 
                 }
@@ -104,14 +130,22 @@ public class AppDetectservice extends IntentService {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-
+                mTracker.set("&uid", customerId);
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Emazify")
+                        .setAction("AppDetect call fail")
+                        .setLabel("FAIL").build());
             }
 
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-
+                mTracker.set("&uid", customerId);
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Emazify")
+                        .setAction("AppDetect call fail")
+                        .setLabel("FAIL").build());
             }
 
         });
