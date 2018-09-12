@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.emazify.MyApplication1;
+import com.emazify.trackingFile;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -37,7 +37,7 @@ public class AppDetectservice extends IntentService {
         super.onCreate();
         mConnectionDetector = new ConnectionDetector(getBaseContext());
         mUserFunctions = new UserFunctions(getBaseContext());
-        mTracker = MyApplication1.tracker();
+        mTracker = trackingFile.tracker();
     }
 
     @Nullable

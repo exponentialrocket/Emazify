@@ -487,7 +487,7 @@ public class EmazyInitialize{
     }
 
     public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
-        mTracker = MyApplication1.tracker();
+        mTracker = trackingFile.tracker();
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
 
