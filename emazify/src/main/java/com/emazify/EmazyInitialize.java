@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.emazify.Services.AppDetectservice;
+import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.messaging.RemoteMessage;
@@ -43,8 +44,8 @@ public class EmazyInitialize{
     private static final String TAG = EmazyInitialize.class.getSimpleName();
     private final int SPLASH_DISPLAY_LENGTH = 5000;
     private final AsyncHttpClient aClient = new SyncHttpClient();
-    private Tracker mTracker;
-
+    private static volatile GoogleAnalytics mGoogleAnalytics;
+    private static volatile Tracker mTracker;
     private static EmazyInitialize ourInstance = new EmazyInitialize();
 
     public static EmazyInitialize getInstance() {
@@ -487,6 +488,14 @@ public class EmazyInitialize{
     }
 
     public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
+
+        mGoogleAnalytics = GoogleAnalytics.getInstance(context);
+        mGoogleAnalytics.setLocalDispatchPeriod(1);
+        mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
+        mTracker.enableExceptionReporting(true);
+        mTracker.enableAdvertisingIdCollection(true);
+        mTracker.enableAutoActivityTracking(false);
+
         mTracker = trackingFile.tracker();
         try{
             if (mConnectionDetector.isConnectingToInternet()) {

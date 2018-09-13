@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.emazify.trackingFile;
+import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -15,6 +16,7 @@ import org.apache.http.Header;
 import org.json.JSONObject;
 
 import Utils.ConnectionDetector;
+import Utils.Const;
 import Utils.UserFunctions;
 import Utils.utils;
 
@@ -26,7 +28,8 @@ public class AppDetectservice extends IntentService {
     private String accountId;
     private String userCity;
     private String customerId;
-    private Tracker mTracker;
+    private static volatile GoogleAnalytics mGoogleAnalytics;
+    private static volatile Tracker mTracker;
 
     public AppDetectservice() {
         super("AppDetectservice");
@@ -37,6 +40,14 @@ public class AppDetectservice extends IntentService {
         super.onCreate();
         mConnectionDetector = new ConnectionDetector(getBaseContext());
         mUserFunctions = new UserFunctions(getBaseContext());
+
+        mGoogleAnalytics = GoogleAnalytics.getInstance(getBaseContext());
+        mGoogleAnalytics.setLocalDispatchPeriod(1);
+        mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
+        mTracker.enableExceptionReporting(true);
+        mTracker.enableAdvertisingIdCollection(true);
+        mTracker.enableAutoActivityTracking(false);
+
         mTracker = trackingFile.tracker();
     }
 
