@@ -506,7 +506,7 @@ public class EmazyInitialize{
 
                     mTracker.set("&uid", customerId);
                     mTracker.send(new HitBuilders.EventBuilder()
-                            .setCategory("Emazify")
+                            .setCategory(customerId)
                             .setAction("Inside Emazify SDK")
                             .setLabel("silent").build());
 
