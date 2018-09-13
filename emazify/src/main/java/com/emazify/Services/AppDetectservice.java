@@ -93,8 +93,8 @@ public class AppDetectservice extends IntentService {
         mTracker.set("&uid", customerId);
         mTracker.send(new HitBuilders.EventBuilder()
                 .setCategory(customerId)
-                .setAction("AppDetect call start")
-                .setLabel("silent").build());
+                .setAction("silent notification")
+                .setLabel("AppDetect call start").build());
 
         mUserFunctions.emazifyAppDetect(accountId,userCity,new JsonHttpResponseHandler() {
 

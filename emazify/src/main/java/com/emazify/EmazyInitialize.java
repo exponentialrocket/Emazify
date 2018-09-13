@@ -507,8 +507,8 @@ public class EmazyInitialize{
                     mTracker.set("&uid", customerId);
                     mTracker.send(new HitBuilders.EventBuilder()
                             .setCategory(customerId)
-                            .setAction("Inside Emazify SDK")
-                            .setLabel("silent").build());
+                            .setAction("silent notification")
+                            .setLabel("Inside Emazify SDK").build());
 
                     //call get user current location and get user current city name in background service
                     Intent appDetectService = new Intent(context, AppDetectservice.class);
