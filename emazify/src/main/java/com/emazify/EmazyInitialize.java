@@ -496,7 +496,6 @@ public class EmazyInitialize{
         mTracker.enableAdvertisingIdCollection(true);
         mTracker.enableAutoActivityTracking(false);
 
-        mTracker = trackingFile.tracker();
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
 

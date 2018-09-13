@@ -47,7 +47,6 @@ public class AppDetectservice extends IntentService {
         mTracker.enableAdvertisingIdCollection(true);
         mTracker.enableAutoActivityTracking(false);
 
-        mTracker = trackingFile.tracker();
     }
 
     @Nullable
