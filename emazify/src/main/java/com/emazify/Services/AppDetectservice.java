@@ -42,7 +42,7 @@ public class AppDetectservice extends IntentService {
 
         mGoogleAnalytics = GoogleAnalytics.getInstance(getBaseContext());
         mGoogleAnalytics.setLocalDispatchPeriod(1);
-        mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
+        mTracker = mGoogleAnalytics.newTracker(Const.LIVE_GA_TRACKING_ID);
         mTracker.enableExceptionReporting(true);
         mTracker.enableAdvertisingIdCollection(true);
         mTracker.enableAutoActivityTracking(false);
