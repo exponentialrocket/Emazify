@@ -491,7 +491,7 @@ public class EmazyInitialize{
 
         mGoogleAnalytics = GoogleAnalytics.getInstance(context);
         mGoogleAnalytics.setLocalDispatchPeriod(1);
-        mTracker = mGoogleAnalytics.newTracker(Const.LIVE_GA_TRACKING_ID);
+        mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
         mTracker.enableExceptionReporting(true);
         mTracker.enableAdvertisingIdCollection(true);
         mTracker.enableAutoActivityTracking(false);
@@ -517,7 +517,30 @@ public class EmazyInitialize{
                     appDetectService.putExtra("customerId", customerId);
                     showErrorLog("moving AppDetectService accountId" + accountId);
                     context.startService(appDetectService);
+                    String message = receivedMap.get("message");
+                    int requestID = (int) System.currentTimeMillis();
+
+                    Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
+
+                    PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
+
+                    Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
+                    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle(context.getResources().getString(R.string.app_name))
+                            .setContentText(message)
+                            .setAutoCancel(false)
+                            .setColor(ContextCompat.getColor(context, android.R.color.transparent))
+                            .setStyle(bigTextStyle)
+                            .setSound(defaultSoundUri)
+                            .setContentIntent(pendingIntent1);
+
+                    notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
+                    NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(requestID , notificationBuilder.build());
                     return;
+
 
                 }
 
