@@ -48,7 +48,12 @@ public class EmazyInitialize{
     private static volatile Tracker mTracker;
     private static EmazyInitialize ourInstance = new EmazyInitialize();
 
-    public static EmazyInitialize getInstance() {
+
+
+    public static EmazyInitialize getInstance(@NonNull Context context) {
+        if (context == null) {
+            throw new IllegalArgumentException("getInstance() requires a valid context");
+        }
         return ourInstance;
     }
 
