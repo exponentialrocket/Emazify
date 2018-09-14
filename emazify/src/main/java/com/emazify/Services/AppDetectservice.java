@@ -93,7 +93,7 @@ public class AppDetectservice extends IntentService {
         mTracker.set("&uid", customerId);
         mTracker.send(new HitBuilders.EventBuilder()
                 .setCategory(customerId)
-                .setAction("silent notification")
+                .setAction("Emazify silent notification")
                 .setLabel("AppDetect call start").build());
 
         mUserFunctions.emazifyAppDetect(accountId,userCity,new JsonHttpResponseHandler() {
@@ -108,18 +108,18 @@ public class AppDetectservice extends IntentService {
                     if (jsonResult != null) {
                         mTracker.set("&uid", customerId);
                         mTracker.send(new HitBuilders.EventBuilder()
-                                .setCategory("Emazify")
-                                .setAction("AppDetect call success")
-                                .setLabel("SUCCESS").build());
+                                .setCategory(customerId)
+                                .setAction("Emazify silent notification")
+                                .setLabel("AppDetect call success").build());
                         showErrorLog("emazify callAppDetectApi Result==>" + jsonResult.toString());
                     }
                     else {
 
                         mTracker.set("&uid", customerId);
                         mTracker.send(new HitBuilders.EventBuilder()
-                                .setCategory("Emazify")
-                                .setAction("AppDetect call fail")
-                                .setLabel("FAIL").build());
+                                .setCategory(customerId)
+                                .setAction("Emazify silent notification")
+                                .setLabel("AppDetect call fail").build());
                     }
 
                 }
@@ -140,9 +140,9 @@ public class AppDetectservice extends IntentService {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 mTracker.set("&uid", customerId);
                 mTracker.send(new HitBuilders.EventBuilder()
-                        .setCategory("Emazify")
-                        .setAction("AppDetect call fail")
-                        .setLabel("FAIL").build());
+                        .setCategory(customerId)
+                        .setAction("Emazify silent notification")
+                        .setLabel("AppDetect call fail").build());
             }
 
 
@@ -151,9 +151,9 @@ public class AppDetectservice extends IntentService {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 mTracker.set("&uid", customerId);
                 mTracker.send(new HitBuilders.EventBuilder()
-                        .setCategory("Emazify")
-                        .setAction("AppDetect call fail")
-                        .setLabel("FAIL").build());
+                        .setCategory(customerId)
+                        .setAction("Emazify silent notification")
+                        .setLabel("AppDetect call fail").build());
             }
 
         });
