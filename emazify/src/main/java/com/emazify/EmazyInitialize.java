@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.emazify.Services.AppDetectservice;
 import com.google.android.gms.analytics.GoogleAnalytics;
@@ -480,12 +481,12 @@ public class EmazyInitialize{
         });
     }
 
-    public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg) {
+    public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg,String accountId,String customerId) {
 
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
-
+            sendNotification(context,"Ahmedabad",customerId,accountId,msg);
             return true;
         }
 
@@ -494,12 +495,20 @@ public class EmazyInitialize{
 
     public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
 
-        mGoogleAnalytics = GoogleAnalytics.getInstance(context);
-        mGoogleAnalytics.setLocalDispatchPeriod(1);
-        mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
-        mTracker.enableExceptionReporting(true);
-        mTracker.enableAdvertisingIdCollection(true);
-        mTracker.enableAutoActivityTracking(false);
+
+        Toast.makeText(context,"INSIDE SEND NOTI",Toast.LENGTH_LONG).show();
+
+        try {
+            mGoogleAnalytics = GoogleAnalytics.getInstance(context);
+            mGoogleAnalytics.setLocalDispatchPeriod(1);
+            mTracker = mGoogleAnalytics.newTracker(Const.STAGING_GA_TRACKING_ID);
+            mTracker.enableExceptionReporting(true);
+            mTracker.enableAdvertisingIdCollection(true);
+            mTracker.enableAutoActivityTracking(false);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(context,"EXCEPTION",Toast.LENGTH_LONG).show();
+        }
 
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
