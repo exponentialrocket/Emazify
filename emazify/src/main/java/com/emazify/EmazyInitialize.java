@@ -484,7 +484,7 @@ public class EmazyInitialize{
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
-            sendNotification(context,"Ahmedabad",customerId,accountId,msg);
+           // sendNotification(context,"Ahmedabad",customerId,accountId,msg);
             return true;
         }
 
