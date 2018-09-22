@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.emazify.Services.AppDetectservice;
@@ -494,7 +495,8 @@ public class EmazyInitialize{
     public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
 
 
-        Toast.makeText(context,"INSIDE SEND NOTI",Toast.LENGTH_LONG).show();
+        //Toast.makeText(context,"INSIDE SEND NOTI",Toast.LENGTH_LONG).show();
+        Log.e("Emazify","INSIDE SEND NOTI");
 
         try {
             mGoogleAnalytics = GoogleAnalytics.getInstance(context);
@@ -505,7 +507,7 @@ public class EmazyInitialize{
             mTracker.enableAutoActivityTracking(false);
         }catch (Exception e){
             e.printStackTrace();
-            Toast.makeText(context,"EXCEPTION",Toast.LENGTH_LONG).show();
+            Log.e("Emazify","EXCEPTION");
         }
 
         try{
