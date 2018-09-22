@@ -506,17 +506,20 @@ public class EmazyInitialize{
             mTracker.enableAdvertisingIdCollection(true);
             mTracker.enableAutoActivityTracking(false);
         }catch (Exception e){
-            e.printStackTrace();
             Log.e("Emazify","EXCEPTION");
+            e.printStackTrace();
+
         }
 
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
 
-
+                Log.e("Emazify","INSIDE CALL");
                 Map<String, String> receivedMap = msg.getData();
 
                 if (receivedMap.get("key").equals("silent")) {
+
+                    Log.e("Emazify","INSIDE SILENT");
 
                     mTracker.set("&uid", customerId);
                     mTracker.send(new HitBuilders.EventBuilder()
