@@ -480,12 +480,11 @@ public class EmazyInitialize{
         });
     }
 
-    public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg,String accountId,String customerId) {
+    public boolean isEmazifyNotification(final Context context,@NonNull RemoteMessage msg) {
 
         Map<String, String> receivedMap = msg.getData();
 
         if(receivedMap.get("key").equals("campaignNotification") || receivedMap.get("key").equals("silent")){
-           // sendNotification(context,"Ahmedabad",customerId,accountId,msg);
             return true;
         }
 
