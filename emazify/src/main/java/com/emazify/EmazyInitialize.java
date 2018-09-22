@@ -497,7 +497,8 @@ public class EmazyInitialize{
 
         //Toast.makeText(context,"INSIDE SEND NOTI",Toast.LENGTH_LONG).show();
         Log.e("Emazify","INSIDE SEND NOTI");
-
+        mConnectionDetector = new ConnectionDetector(context);
+        mUserFunctions = new UserFunctions(context);
         try {
             mGoogleAnalytics = GoogleAnalytics.getInstance(context);
             mGoogleAnalytics.setLocalDispatchPeriod(1);
@@ -507,6 +508,7 @@ public class EmazyInitialize{
             mTracker.enableAutoActivityTracking(false);
         }catch (Exception e){
             Log.e("Emazify","EXCEPTION");
+
             e.printStackTrace();
 
         }
