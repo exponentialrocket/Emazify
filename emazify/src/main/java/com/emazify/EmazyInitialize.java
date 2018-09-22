@@ -494,9 +494,6 @@ public class EmazyInitialize{
 
     public void sendNotification(final Context context,String userCity,String customerId,String accountId, RemoteMessage msg) {
 
-
-        //Toast.makeText(context,"INSIDE SEND NOTI",Toast.LENGTH_LONG).show();
-        Log.e("Emazify","INSIDE SEND NOTI");
         mConnectionDetector = new ConnectionDetector(context);
         mUserFunctions = new UserFunctions(context);
         try {
@@ -507,8 +504,6 @@ public class EmazyInitialize{
             mTracker.enableAdvertisingIdCollection(true);
             mTracker.enableAutoActivityTracking(false);
         }catch (Exception e){
-            Log.e("Emazify","EXCEPTION");
-
             e.printStackTrace();
 
         }
@@ -516,12 +511,9 @@ public class EmazyInitialize{
         try{
             if (mConnectionDetector.isConnectingToInternet()) {
 
-                Log.e("Emazify","INSIDE CALL");
                 Map<String, String> receivedMap = msg.getData();
 
                 if (receivedMap.get("key").equals("silent")) {
-
-                    Log.e("Emazify","INSIDE SILENT");
 
                     mTracker.set("&uid", customerId);
                     mTracker.send(new HitBuilders.EventBuilder()
@@ -536,28 +528,6 @@ public class EmazyInitialize{
                     appDetectService.putExtra("customerId", customerId);
                     showErrorLog("moving AppDetectService accountId" + accountId);
                     context.startService(appDetectService);
-                    String message = receivedMap.get("message");
-                    int requestID = (int) System.currentTimeMillis();
-
-                    Intent intent1 = new Intent(context, MyBroadcastReceiver.class);
-
-                    PendingIntent pendingIntent1 = PendingIntent.getBroadcast(context, 99999+requestID, intent1, 0);
-
-                    Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                    NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle().bigText(message);
-                    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                            .setSmallIcon(R.drawable.ic_notification)
-                            .setContentTitle(context.getResources().getString(R.string.app_name))
-                            .setContentText(message)
-                            .setAutoCancel(false)
-                            .setColor(ContextCompat.getColor(context, android.R.color.transparent))
-                            .setStyle(bigTextStyle)
-                            .setSound(defaultSoundUri)
-                            .setContentIntent(pendingIntent1);
-
-                    notificationBuilder.getNotification().flags |= Notification.FLAG_AUTO_CANCEL;
-                    NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-                    notificationManager.notify(requestID , notificationBuilder.build());
                     return;
 
 
