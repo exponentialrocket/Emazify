@@ -51,10 +51,8 @@ public class EmazyInitialize{
 
 
 
-    public static EmazyInitialize getInstance(@NonNull Context context) {
-        if (context == null) {
-            throw new IllegalArgumentException("getInstance() requires a valid context");
-        }
+    public static EmazyInitialize getInstance() {
+
         return ourInstance;
     }
 
