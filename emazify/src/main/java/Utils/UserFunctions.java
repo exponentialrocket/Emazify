@@ -83,7 +83,7 @@ public class UserFunctions{
 
         }
 
-            EMAZIFY_DRIVER_LOGIN_URL = "https://stagingapi.emazify.in/V1/driverAndroidLogin";
+            /*EMAZIFY_DRIVER_LOGIN_URL = "https://stagingapi.emazify.in/V1/driverAndroidLogin";
             EMAZIFY_DRIVER_EVENTS = "https://stagingapi.emazify.in/V1/driverSystemEvent";
             EMAZIFY_DRIVER_PROPERTY_URL = "https://stagingapi.emazify.in/V1/driverProperties";
 
@@ -102,9 +102,9 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "w8KYpQLT0o3Wmc41qFMqcmFlsHLmrz4CvdfEps10";
             EMAZIFY_EVENTS_KEY = "fhuVU0192P6mCq3r4RHe86sqAOvEzwgoDwfJ7nhb";
             EMAZIFY_NOTI_UPDATE_KEY= "Zc9NxSUJ6d7kkerODyzvI8twTyGTrMWz9vpVYOES";
-            EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";
+            EMAZIFY_APP_DETECT_KEY= "EKVa1qoLNc47qTzAoDHmQ6itfa2Eqq1249LQY5dM";*/
 
-            /*EMAZIFY_DRIVER_LOGIN_URL = "https://api.emazify.in/V1/driverAndroidLogin";
+            EMAZIFY_DRIVER_LOGIN_URL = "https://api.emazify.in/V1/driverAndroidLogin";
             EMAZIFY_DRIVER_EVENTS = "https://api.emazify.in/V1/driverSystemEvent";
             EMAZIFY_DRIVER_PROPERTY_URL = "https://api.emazify.in/V1/driverProperties";
 
@@ -121,7 +121,7 @@ public class UserFunctions{
             EMAZIFY_USER_AUTO_PROPERTY_KEY = "rA5dTpW9xQ6wcGAfBRFjZN9l37Ptyk941ZTiLo26";
             EMAZIFY_EVENTS_KEY = "5dyLY8WlFReBpkk2mrpt12caNum8I2S18JKzkYp0";
             EMAZIFY_NOTI_UPDATE_KEY= "LJhteNWdIE8BvvYL8Geji6k6DiwAT1VSlNQqSeFj";
-            EMAZIFY_APP_DETECT_KEY= "xfPLSMavRR3409W4wkS9f6YHI9gdAlFB7QfH552H";*/
+            EMAZIFY_APP_DETECT_KEY= "xfPLSMavRR3409W4wkS9f6YHI9gdAlFB7QfH552H";
 
     }
 
